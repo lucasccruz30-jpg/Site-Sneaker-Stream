@@ -16,7 +16,10 @@
     "prisma:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
-    "vercel-build": "node scripts/vercel-build.mjs"
+    "vercel-build": "node scripts/vercel-build.mjs",
+    "sync:now": "node scripts/auto-sync.mjs",
+    "sync:now:dry": "node scripts/auto-sync.mjs --dry-run",
+    "setup:hooks": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

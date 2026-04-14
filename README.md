@@ -192,6 +192,34 @@ npm run prisma:deploy
 npm run prisma:studio
 npm run db:seed
 npm run vercel-build
+npm run sync:now
+npm run sync:now:dry
+npm run setup:hooks
+```
+
+## Autossincronização
+
+- O repositório pode sincronizar GitHub e Vercel automaticamente após cada `git commit`
+- Em `main`, o hook faz `git push` e `vercel deploy --prod --yes`
+- Em outras branches, o hook faz `git push` e `vercel deploy --yes` para preview
+- O hook versionado fica em `.githooks/post-commit`
+- O script central fica em `scripts/auto-sync.mjs`
+- Para habilitar em uma nova máquina, rode:
+
+```bash
+npm run setup:hooks
+```
+
+- Para testar sem publicar nada:
+
+```bash
+npm run sync:now:dry
+```
+
+- Para desativar temporariamente em uma sessão PowerShell:
+
+```powershell
+$env:SNEAKER_STREAM_SKIP_AUTO_SYNC="1"
 ```
 
 ## Branding e identidade visual
