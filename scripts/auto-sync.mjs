@@ -6,10 +6,22 @@ const dryRun = process.argv.includes("--dry-run");
 const productionBranch = process.env.SNEAKER_STREAM_AUTO_SYNC_BRANCH || "main";
 const vercelCommand = process.platform === "win32" ? "vercel.cmd" : "vercel";
 
+function getCommand(command, args) {
+  if (process.platform === "win32") {
+    return {
+      command: "cmd.exe",
+      args: ["/d", "/s", "/c", command, ...args],
+    };
+  }
+
+  return { command, args };
+}
+
 function run(command, args, options = {}) {
-  const result = spawnSync(command, args, {
+  const executable = getCommand(command, args);
+
+  const result = spawnSync(executable.command, executable.args, {
     stdio: "inherit",
-    shell: process.platform === "win32",
     ...options,
   });
 
@@ -19,9 +31,10 @@ function run(command, args, options = {}) {
 }
 
 function read(command, args) {
-  const result = spawnSync(command, args, {
+  const executable = getCommand(command, args);
+
+  const result = spawnSync(executable.command, executable.args, {
     encoding: "utf8",
-    shell: process.platform === "win32",
   });
 
   if (result.status !== 0) {
