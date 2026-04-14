@@ -6,7 +6,12 @@ import { cn } from "@/lib/utils";
 export function BrandMark({ compact = false, href = "/" }: { compact?: boolean; href?: string }) {
   return (
     <Link href={href} className="group inline-flex items-center gap-3">
-      <div className={cn("relative overflow-hidden rounded-full border border-white/10 bg-white/5", compact ? "size-10" : "size-14")}>
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-xl border border-brand-black/10 bg-white shadow-[0_12px_28px_rgba(19,19,19,0.08)] transition group-hover:border-brand-wine/20",
+          compact ? "size-10" : "size-14",
+        )}
+      >
         <Image
           src="/brand/logo-primary.png"
           alt="Sneaker Stream"
@@ -17,8 +22,10 @@ export function BrandMark({ compact = false, href = "/" }: { compact?: boolean; 
         />
       </div>
       <div className={cn("space-y-0.5", compact && "hidden sm:block")}>
-        <p className="font-heading text-2xl leading-none tracking-wide text-white">Sneaker Stream</p>
-        <p className="text-[0.68rem] uppercase tracking-[0.28em] text-brand-light-gray">A sua loja de tênis</p>
+        <p className="font-heading text-2xl leading-none tracking-wide text-brand-black">Sneaker Stream</p>
+        <p className="text-[0.68rem] uppercase tracking-[0.28em] text-brand-warm-gray">
+          Curadoria de sneakers premium
+        </p>
       </div>
     </Link>
   );

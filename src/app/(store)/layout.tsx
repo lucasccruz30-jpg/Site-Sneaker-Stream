@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
+    <div className="store-shell min-h-screen">
       <SiteHeader />
       <main>{children}</main>
       <SiteFooter />

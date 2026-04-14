@@ -49,9 +49,9 @@ export function NewsletterForm() {
         });
       })}
     >
-      <Input {...form.register("name")} placeholder="Seu nome" className="border-white/10 bg-white/5 text-white" />
-      <Input {...form.register("email")} placeholder="Seu melhor e-mail" className="border-white/10 bg-white/5 text-white" />
-      <Button type="submit" disabled={isPending} className="h-11 rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+      <Input {...form.register("name")} placeholder="Seu nome" className="store-input h-11 rounded-lg" />
+      <Input {...form.register("email")} placeholder="Seu melhor e-mail" className="store-input h-11 rounded-lg" />
+      <Button type="submit" disabled={isPending} className="h-11 rounded-lg bg-white text-brand-black hover:bg-brand-off-white">
         Receber drops
       </Button>
     </form>
@@ -73,7 +73,7 @@ export function ContactForm() {
 
   return (
     <form
-      className="surface-panel space-y-4 p-6"
+      className="store-panel space-y-4 p-6"
       onSubmit={form.handleSubmit((values) => {
         startTransition(async () => {
           const response = await fetch("/api/contact", {
@@ -93,17 +93,17 @@ export function ContactForm() {
       })}
     >
       <div className="grid gap-4 md:grid-cols-2">
-        <Input {...form.register("name")} placeholder="Seu nome" className="border-white/10 bg-white/5 text-white" />
-        <Input {...form.register("email")} placeholder="Seu e-mail" className="border-white/10 bg-white/5 text-white" />
-        <Input {...form.register("phone")} placeholder="Telefone" className="border-white/10 bg-white/5 text-white" />
-        <Input {...form.register("subject")} placeholder="Assunto" className="border-white/10 bg-white/5 text-white" />
+        <Input {...form.register("name")} placeholder="Seu nome" className="store-input" />
+        <Input {...form.register("email")} placeholder="Seu e-mail" className="store-input" />
+        <Input {...form.register("phone")} placeholder="Telefone" className="store-input" />
+        <Input {...form.register("subject")} placeholder="Assunto" className="store-input" />
       </div>
       <Textarea
         {...form.register("message")}
-        placeholder="Conte o que você precisa e nossa equipe responde com rapidez."
-        className="min-h-40 border-white/10 bg-white/5 text-white"
+        placeholder="Conte o que voce precisa e nossa equipe responde com rapidez."
+        className="min-h-40 rounded-lg border-brand-black/10 bg-white/88 text-brand-black placeholder:text-brand-warm-gray"
       />
-      <Button type="submit" disabled={isPending} className="h-11 rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+      <Button type="submit" disabled={isPending} className="h-11 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
         Enviar mensagem
       </Button>
     </form>
@@ -125,7 +125,7 @@ export function LoginForm() {
 
   return (
     <form
-      className="surface-panel space-y-4 p-6"
+      className="store-panel space-y-4 p-6"
       onSubmit={form.handleSubmit((values) => {
         startTransition(async () => {
           const result = await signIn("credentials", {
@@ -135,7 +135,7 @@ export function LoginForm() {
           });
 
           if (result?.error) {
-            toast.error("E-mail ou senha inválidos.");
+            toast.error("E-mail ou senha invalidos.");
             return;
           }
 
@@ -145,14 +145,14 @@ export function LoginForm() {
       })}
     >
       <div className="space-y-2">
-        <label className="text-sm text-brand-light-gray">E-mail</label>
-        <Input {...form.register("email")} type="email" className="border-white/10 bg-white/5 text-white" />
+        <label className="text-sm text-brand-charcoal">E-mail</label>
+        <Input {...form.register("email")} type="email" className="store-input" />
       </div>
       <div className="space-y-2">
-        <label className="text-sm text-brand-light-gray">Senha</label>
-        <Input {...form.register("password")} type="password" className="border-white/10 bg-white/5 text-white" />
+        <label className="text-sm text-brand-charcoal">Senha</label>
+        <Input {...form.register("password")} type="password" className="store-input" />
       </div>
-      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
         Entrar
       </Button>
     </form>
@@ -175,11 +175,11 @@ export function RegisterForm() {
 
   return (
     <form
-      className="surface-panel space-y-4 p-6"
+      className="store-panel space-y-4 p-6"
       onSubmit={form.handleSubmit((values) => {
         startTransition(async () => {
           if (values.password !== values.confirmPassword) {
-            toast.error("As senhas não coincidem.");
+            toast.error("As senhas nao coincidem.");
             return;
           }
 
@@ -202,20 +202,15 @@ export function RegisterForm() {
       })}
     >
       <div className="grid gap-4 md:grid-cols-2">
-        <Input {...form.register("name")} placeholder="Nome completo" className="border-white/10 bg-white/5 text-white" />
-        <Input {...form.register("phone")} placeholder="Telefone" className="border-white/10 bg-white/5 text-white" />
+        <Input {...form.register("name")} placeholder="Nome completo" className="store-input" />
+        <Input {...form.register("phone")} placeholder="Telefone" className="store-input" />
       </div>
-      <Input {...form.register("email")} type="email" placeholder="Seu e-mail" className="border-white/10 bg-white/5 text-white" />
+      <Input {...form.register("email")} type="email" placeholder="Seu e-mail" className="store-input" />
       <div className="grid gap-4 md:grid-cols-2">
-        <Input {...form.register("password")} type="password" placeholder="Senha" className="border-white/10 bg-white/5 text-white" />
-        <Input
-          {...form.register("confirmPassword")}
-          type="password"
-          placeholder="Confirmar senha"
-          className="border-white/10 bg-white/5 text-white"
-        />
+        <Input {...form.register("password")} type="password" placeholder="Senha" className="store-input" />
+        <Input {...form.register("confirmPassword")} type="password" placeholder="Confirmar senha" className="store-input" />
       </div>
-      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
         Criar conta
       </Button>
     </form>
@@ -235,7 +230,7 @@ export function ReviewForm({ product }: { product: ProductDetailData }) {
 
   return (
     <form
-      className="surface-panel space-y-4 p-6"
+      className="store-panel space-y-4 p-6"
       onSubmit={form.handleSubmit((values) => {
         startTransition(async () => {
           const result = await createReviewAction({
@@ -253,12 +248,16 @@ export function ReviewForm({ product }: { product: ProductDetailData }) {
       })}
     >
       <div className="grid gap-4 md:grid-cols-[140px_1fr]">
-        <Input {...form.register("rating", { valueAsNumber: true })} type="number" min={1} max={5} className="border-white/10 bg-white/5 text-white" />
-        <Input {...form.register("title")} placeholder="Título da avaliação" className="border-white/10 bg-white/5 text-white" />
+        <Input {...form.register("rating", { valueAsNumber: true })} type="number" min={1} max={5} className="store-input" />
+        <Input {...form.register("title")} placeholder="Titulo da avaliacao" className="store-input" />
       </div>
-      <Textarea {...form.register("comment")} placeholder="Conte como foi sua experiência com o produto e a compra." className="min-h-32 border-white/10 bg-white/5 text-white" />
-      <Button type="submit" disabled={isPending} className="rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
-        Enviar avaliação
+      <Textarea
+        {...form.register("comment")}
+        placeholder="Conte como foi sua experiencia com o produto e a compra."
+        className="min-h-32 rounded-lg border-brand-black/10 bg-white/88 text-brand-black placeholder:text-brand-warm-gray"
+      />
+      <Button type="submit" disabled={isPending} className="rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+        Enviar avaliacao
       </Button>
     </form>
   );

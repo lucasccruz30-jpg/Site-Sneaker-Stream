@@ -13,11 +13,11 @@ export function MobileNav() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="border-white/10 bg-white/5 text-white hover:bg-white/10 lg:hidden">
+        <Button variant="outline" size="icon" className="border-brand-black/10 bg-white/75 text-brand-black hover:bg-white lg:hidden">
           <Menu className="size-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="border-white/10 bg-[#161616] text-white">
+      <SheetContent side="left" className="border-brand-black/10 bg-[#fbf7f2] text-brand-black">
         <SheetHeader>
           <SheetTitle className="sr-only">Navegação principal</SheetTitle>
         </SheetHeader>
@@ -25,17 +25,17 @@ export function MobileNav() {
           <BrandMark />
           <nav className="space-y-3">
             {mainNavigation.map((link) => (
-              <Link key={link.href} href={link.href} className="block rounded-2xl border border-white/8 bg-white/5 px-4 py-4">
-                <span className="block font-medium text-white">{link.label}</span>
-                {link.description ? <span className="mt-1 block text-sm text-brand-light-gray">{link.description}</span> : null}
+              <Link key={link.href} href={link.href} className="block rounded-xl border border-brand-black/8 bg-white/72 px-4 py-4">
+                <span className="block font-medium text-brand-black">{link.label}</span>
+                {link.description ? <span className="mt-1 block text-sm text-brand-warm-gray">{link.description}</span> : null}
               </Link>
             ))}
           </nav>
           <div className="grid gap-3">
-            <Link href="/login" className="rounded-2xl border border-white/8 px-4 py-3 text-sm text-brand-light-gray">
+            <Link href="/login" className="rounded-lg border border-brand-black/10 bg-white/72 px-4 py-3 text-sm text-brand-charcoal">
               Entrar
             </Link>
-            <Link href="/cadastro" className="rounded-2xl bg-brand-wine px-4 py-3 text-sm font-medium text-white">
+            <Link href="/cadastro" className="rounded-lg bg-brand-wine px-4 py-3 text-sm font-medium text-white">
               Criar conta
             </Link>
           </div>

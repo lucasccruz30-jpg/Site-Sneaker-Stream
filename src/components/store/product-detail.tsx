@@ -29,13 +29,13 @@ export function ProductDetail({ product }: { product: ProductDetailData }) {
   return (
     <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
       <div className="space-y-4">
-        <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-          <div className="relative aspect-square overflow-hidden bg-[#181818]">
+        <div className="store-panel overflow-hidden p-3">
+          <div className="relative aspect-square overflow-hidden rounded-xl bg-[#ece6e1]">
             <Image
               src={selectedImage}
               alt={product.name}
               fill
-              className="object-cover transition duration-500 hover:scale-110"
+              className="object-cover transition duration-500 hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -46,9 +46,9 @@ export function ProductDetail({ product }: { product: ProductDetailData }) {
               key={image.id}
               type="button"
               onClick={() => setSelectedImage(image.url)}
-              className={`relative aspect-square overflow-hidden rounded-[1.4rem] border ${
-                selectedImage === image.url ? "border-brand-wine" : "border-white/10"
-              } bg-white/5`}
+              className={`relative aspect-square overflow-hidden rounded-lg border ${
+                selectedImage === image.url ? "border-brand-wine" : "border-brand-black/10"
+              } bg-white`}
             >
               <Image src={image.url} alt={image.alt} fill className="object-cover" sizes="20vw" />
             </button>
@@ -56,34 +56,30 @@ export function ProductDetail({ product }: { product: ProductDetailData }) {
         </div>
       </div>
 
-      <div className="surface-panel h-fit space-y-8 p-7 sm:p-8 lg:sticky lg:top-28">
+      <div className="store-panel h-fit space-y-8 p-7 sm:p-8 lg:sticky lg:top-28">
         <div className="space-y-3">
-          <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-light-gray">
-            {product.brand} • {product.category}
+          <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-warm-gray">
+            {product.brand} / {product.category}
           </p>
-          <h1 className="font-heading text-5xl text-white">{product.name}</h1>
-          <p className="text-base leading-8 text-brand-light-gray">{product.shortDescription}</p>
+          <h1 className="font-heading text-5xl text-brand-black">{product.name}</h1>
+          <p className="text-base leading-8 text-brand-charcoal">{product.shortDescription}</p>
         </div>
 
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <span className="text-3xl font-semibold text-white">{formatCurrency(currentPrice)}</span>
+            <span className="text-3xl font-semibold text-brand-black">{formatCurrency(currentPrice)}</span>
             {product.salePriceInCents ? (
-              <span className="text-base text-brand-light-gray line-through">
-                {formatCurrency(product.basePriceInCents)}
-              </span>
+              <span className="text-base text-brand-warm-gray line-through">{formatCurrency(product.basePriceInCents)}</span>
             ) : null}
           </div>
-          <p className="text-sm text-brand-light-gray">{getInstallmentText(currentPrice, product.installmentCount)}</p>
-          <p className="text-sm text-brand-light-gray">
-            No PIX: {formatCurrency(Math.round(currentPrice * 0.95))} com confirmação rápida
-          </p>
+          <p className="text-sm text-brand-charcoal">{getInstallmentText(currentPrice, product.installmentCount)}</p>
+          <p className="text-sm text-brand-charcoal">No PIX: {formatCurrency(Math.round(currentPrice * 0.95))} com confirmacao rapida</p>
         </div>
 
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-white">Escolha sua numeração</p>
-            <p className="text-sm text-brand-light-gray">Guia de tamanhos</p>
+            <p className="text-sm font-medium text-brand-black">Escolha sua numeracao</p>
+            <p className="text-sm text-brand-warm-gray">Guia de tamanhos</p>
           </div>
           <div className="grid grid-cols-4 gap-3">
             {product.variants.map((sizeVariant) => (
@@ -92,25 +88,25 @@ export function ProductDetail({ product }: { product: ProductDetailData }) {
                 type="button"
                 disabled={sizeVariant.stock <= 0}
                 onClick={() => setSelectedVariantId(sizeVariant.id)}
-                className={`rounded-2xl border px-3 py-4 text-sm font-medium transition ${
+                className={`rounded-lg border px-3 py-4 text-sm font-medium transition ${
                   selectedVariantId === sizeVariant.id
-                    ? "border-brand-wine bg-brand-wine/20 text-white"
-                    : "border-white/10 bg-white/5 text-brand-light-gray"
-                } ${sizeVariant.stock <= 0 ? "cursor-not-allowed opacity-40" : "hover:border-brand-light-gray/30 hover:text-white"}`}
+                    ? "border-brand-wine bg-brand-wine/10 text-brand-black"
+                    : "border-brand-black/10 bg-white text-brand-charcoal"
+                } ${sizeVariant.stock <= 0 ? "cursor-not-allowed opacity-40" : "hover:border-brand-black/20 hover:text-brand-black"}`}
               >
                 {sizeVariant.sizeLabel}
               </button>
             ))}
           </div>
           {variant?.stock && variant.stock <= 3 ? (
-            <p className="text-sm text-amber-200">Restam apenas {variant.stock} unidades nesta numeração.</p>
+            <p className="text-sm text-brand-wine">Restam apenas {variant.stock} unidades nesta numeracao.</p>
           ) : null}
         </div>
 
         <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
           <Button
             size="lg"
-            className="h-12 rounded-full bg-brand-wine text-white hover:bg-brand-wine/90"
+            className="h-12 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal"
             disabled={!variant || variant.stock <= 0}
             onClick={() => {
               if (!variant) {
@@ -135,39 +131,39 @@ export function ProductDetail({ product }: { product: ProductDetailData }) {
           >
             Adicionar ao carrinho
           </Button>
-          <WishlistButton product={product} className="size-12 rounded-full" />
+          <WishlistButton product={product} className="size-12 rounded-lg" />
         </div>
 
-        <Button asChild size="lg" variant="outline" className="h-12 w-full rounded-full border-white/10 bg-white/5 text-white hover:bg-white/10">
+        <Button asChild size="lg" variant="outline" className="h-12 w-full rounded-lg border-brand-black/10 bg-white/70 text-brand-black hover:bg-white">
           <Link href="/checkout">Comprar agora</Link>
         </Button>
 
         <div className="grid gap-3">
-          <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-4">
+          <div className="store-panel-muted p-4">
             <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-0.5 size-5 text-brand-off-white" />
+              <ShieldCheck className="mt-0.5 size-5 text-brand-wine" />
               <div>
-                <p className="font-medium text-white">Autenticidade garantida</p>
-                <p className="mt-1 text-sm leading-7 text-brand-light-gray">
-                  Conferência interna antes do envio e suporte rápido em caso de dúvida.
+                <p className="font-medium text-brand-black">Autenticidade garantida</p>
+                <p className="mt-1 text-sm leading-7 text-brand-charcoal">
+                  Conferencia interna antes do envio e suporte rapido em caso de duvida.
                 </p>
               </div>
             </div>
           </div>
-          <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-4">
+          <div className="store-panel-muted p-4">
             <div className="flex items-start gap-3">
-              <Truck className="mt-0.5 size-5 text-brand-off-white" />
+              <Truck className="mt-0.5 size-5 text-brand-wine" />
               <div>
-                <p className="font-medium text-white">Prazo estimado de entrega</p>
-                <p className="mt-1 text-sm leading-7 text-brand-light-gray">
-                  Despacho em até {product.leadTimeInBusinessDays} dias úteis com rastreio seguro.
+                <p className="font-medium text-brand-black">Prazo estimado de entrega</p>
+                <p className="mt-1 text-sm leading-7 text-brand-charcoal">
+                  Despacho em ate {product.leadTimeInBusinessDays} dias uteis com rastreio seguro.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid gap-2 border-t border-white/8 pt-6 text-sm text-brand-light-gray">
+        <div className="grid gap-2 border-t border-brand-black/8 pt-6 text-sm text-brand-charcoal">
           {product.highlights.map((item) => (
             <div key={item} className="flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-brand-wine" />

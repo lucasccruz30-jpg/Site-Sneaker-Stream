@@ -25,8 +25,8 @@ export function WishlistButton({
       variant="outline"
       size="icon"
       className={cn(
-        "border-white/10 bg-black/35 text-white backdrop-blur hover:bg-white/10",
-        hasItem && "border-brand-wine/60 bg-brand-wine/20 text-brand-off-white",
+        "border-brand-black/10 bg-white/80 text-brand-black shadow-[0_10px_24px_rgba(19,19,19,0.08)] hover:bg-white",
+        hasItem && "border-brand-wine/40 bg-brand-wine/10 text-brand-wine",
         className,
       )}
       onClick={() => {

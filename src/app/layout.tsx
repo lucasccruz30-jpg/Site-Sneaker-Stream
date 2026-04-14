@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${manrope.variable} ${cormorant.variable} h-full antialiased dark`}
+      className={`${manrope.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full overflow-x-hidden bg-background font-sans text-foreground">
         <AppProviders>{children}</AppProviders>

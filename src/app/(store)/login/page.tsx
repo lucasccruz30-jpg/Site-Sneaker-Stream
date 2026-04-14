@@ -6,7 +6,7 @@ import { LoginForm } from "@/components/store/storefront-forms";
 
 export const metadata: Metadata = {
   title: "Login",
-  description: "Entre na sua conta para acompanhar pedidos, salvar endereços e comprar com mais rapidez.",
+  description: "Entre na sua conta para acompanhar pedidos, salvar enderecos e comprar com mais rapidez.",
 };
 
 export default function LoginPage() {
@@ -15,14 +15,14 @@ export default function LoginPage() {
       <PageHero
         eyebrow="Login"
         title="Entre para acompanhar pedidos e comprar com mais rapidez"
-        description="Sua conta concentra histórico, endereços, status do pedido e uma experiência ainda mais fluida no checkout."
+        description="Sua conta concentra historico, enderecos, status do pedido e uma experiencia ainda mais fluida no checkout."
       />
       <section className="section-spacing">
         <Container className="grid gap-8 lg:grid-cols-[1fr_440px]">
-          <div className="surface-panel p-8">
-            <h2 className="font-heading text-5xl text-white">Experiência premium também no pós-compra.</h2>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-brand-light-gray">
-              Consulte pedidos, acompanhe entregas, salve informações de entrega e mantenha sua jornada sempre pronta para o próximo drop.
+          <div className="store-panel p-8">
+            <h2 className="font-heading text-5xl text-brand-black">Acesso claro, visual mais profissional e foco no essencial.</h2>
+            <p className="mt-4 max-w-2xl text-base leading-8 text-brand-charcoal">
+              Consulte pedidos, acompanhe entregas, salve informacoes de entrega e mantenha sua jornada sempre pronta para o proximo drop.
             </p>
           </div>
           <LoginForm />

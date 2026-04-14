@@ -27,22 +27,22 @@ function CartSummary({ items }: { items: CartLineItem[] }) {
   const subtotal = items.reduce((sum, item) => sum + item.unitPriceCents * item.quantity, 0);
 
   return (
-    <div className="surface-panel h-fit space-y-5 p-6 lg:sticky lg:top-28">
+    <div className="store-panel h-fit space-y-5 p-6 lg:sticky lg:top-28">
       <div>
-        <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-light-gray">Resumo</p>
-        <h2 className="mt-3 font-heading text-3xl text-white">Seu pedido</h2>
+        <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-warm-gray">Resumo</p>
+        <h2 className="mt-3 font-heading text-3xl text-brand-black">Seu pedido</h2>
       </div>
-      <div className="space-y-3 text-sm text-brand-light-gray">
+      <div className="space-y-3 text-sm text-brand-charcoal">
         <div className="flex items-center justify-between">
           <span>Subtotal</span>
-          <span className="text-white">{formatCurrency(subtotal)}</span>
+          <span className="text-brand-black">{formatCurrency(subtotal)}</span>
         </div>
         <div className="flex items-center justify-between">
           <span>Frete</span>
-          <span className="text-white">Calculado no checkout</span>
+          <span className="text-brand-black">Calculado no checkout</span>
         </div>
       </div>
-      <Button asChild className="h-12 w-full rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+      <Button asChild className="h-12 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
         <Link href="/checkout">Ir para o checkout</Link>
       </Button>
     </div>
@@ -57,9 +57,9 @@ export function CartView() {
   if (!items.length) {
     return (
       <EmptyState
-        title="Seu carrinho está vazio"
+        title="Seu carrinho esta vazio"
         description="Adicione os sneakers mais desejados e volte para finalizar a compra em poucos cliques."
-        actionLabel="Explorar catálogo"
+        actionLabel="Explorar catalogo"
         actionHref="/shop"
       />
     );
@@ -69,52 +69,34 @@ export function CartView() {
     <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
       <div className="space-y-4">
         {items.map((item) => (
-          <article key={item.variantId} className="surface-panel grid gap-5 p-5 sm:grid-cols-[140px_1fr]">
-            <div className="relative aspect-square overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5">
+          <article key={item.variantId} className="store-panel grid gap-5 p-5 sm:grid-cols-[140px_1fr]">
+            <div className="relative aspect-square overflow-hidden rounded-lg border border-brand-black/10 bg-[#ece6e1]">
               <Image src={item.imageUrl} alt={item.productName} fill className="object-cover" sizes="160px" />
             </div>
             <div className="flex flex-col gap-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.22em] text-brand-light-gray">{item.brand}</p>
-                  <h3 className="mt-2 font-heading text-3xl text-white">{item.productName}</h3>
-                  <p className="mt-2 text-sm text-brand-light-gray">Numeração {item.sizeLabel}</p>
+                  <p className="text-xs uppercase tracking-[0.22em] text-brand-warm-gray">{item.brand}</p>
+                  <h3 className="mt-2 font-heading text-3xl text-brand-black">{item.productName}</h3>
+                  <p className="mt-2 text-sm text-brand-charcoal">Numeracao {item.sizeLabel}</p>
                 </div>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  className="border-white/10 bg-white/5 text-white hover:bg-white/10"
-                  onClick={() => removeItem(item.variantId)}
-                >
+                <Button type="button" variant="outline" size="icon" className="border-brand-black/10 bg-white text-brand-black hover:bg-white" onClick={() => removeItem(item.variantId)}>
                   <Trash2 className="size-4" />
                 </Button>
               </div>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full text-white hover:bg-white/10"
-                    onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                  >
+                <div className="flex items-center gap-2 rounded-lg border border-brand-black/10 bg-white p-1">
+                  <Button type="button" variant="ghost" size="icon" className="rounded-md text-brand-black hover:bg-black/5" onClick={() => updateQuantity(item.variantId, item.quantity - 1)}>
                     <Minus className="size-4" />
                   </Button>
-                  <span className="min-w-8 text-center text-white">{item.quantity}</span>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full text-white hover:bg-white/10"
-                    onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                  >
+                  <span className="min-w-8 text-center text-brand-black">{item.quantity}</span>
+                  <Button type="button" variant="ghost" size="icon" className="rounded-md text-brand-black hover:bg-black/5" onClick={() => updateQuantity(item.variantId, item.quantity + 1)}>
                     <Plus className="size-4" />
                   </Button>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-brand-light-gray">Total do item</p>
-                  <p className="text-xl font-semibold text-white">{formatCurrency(item.unitPriceCents * item.quantity)}</p>
+                  <p className="text-sm text-brand-charcoal">Total do item</p>
+                  <p className="text-xl font-semibold text-brand-black">{formatCurrency(item.unitPriceCents * item.quantity)}</p>
                 </div>
               </div>
             </div>
@@ -166,7 +148,7 @@ export function CheckoutView() {
     return (
       <EmptyState
         title="Nada para finalizar ainda"
-        description="Seu checkout aparece aqui assim que você adicionar produtos ao carrinho."
+        description="Seu checkout aparece aqui assim que voce adicionar produtos ao carrinho."
         actionLabel="Voltar para o shop"
         actionHref="/shop"
       />
@@ -176,7 +158,7 @@ export function CheckoutView() {
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
       <form
-        className="surface-panel space-y-5 p-6"
+        className="store-panel space-y-5 p-6"
         onSubmit={form.handleSubmit((values) => {
           startTransition(async () => {
             const result = await createOrderAction({
@@ -196,71 +178,71 @@ export function CheckoutView() {
         })}
       >
         <div>
-          <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-light-gray">Checkout</p>
-          <h2 className="mt-3 font-heading text-4xl text-white">Finalize em poucos cliques</h2>
+          <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-warm-gray">Checkout</p>
+          <h2 className="mt-3 font-heading text-4xl text-brand-black">Finalize em poucos cliques</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <Input {...form.register("name")} placeholder="Nome completo" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("email")} type="email" placeholder="E-mail" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("phone")} placeholder="Telefone" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("zipCode")} placeholder="CEP" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("street")} placeholder="Rua" className="border-white/10 bg-white/5 text-white md:col-span-2" />
-          <Input {...form.register("number")} placeholder="Número" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("complement")} placeholder="Complemento" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("neighborhood")} placeholder="Bairro" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("city")} placeholder="Cidade" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("state")} placeholder="UF" className="border-white/10 bg-white/5 text-white" />
+          <Input {...form.register("name")} placeholder="Nome completo" className="store-input" />
+          <Input {...form.register("email")} type="email" placeholder="E-mail" className="store-input" />
+          <Input {...form.register("phone")} placeholder="Telefone" className="store-input" />
+          <Input {...form.register("zipCode")} placeholder="CEP" className="store-input" />
+          <Input {...form.register("street")} placeholder="Rua" className="store-input md:col-span-2" />
+          <Input {...form.register("number")} placeholder="Numero" className="store-input" />
+          <Input {...form.register("complement")} placeholder="Complemento" className="store-input" />
+          <Input {...form.register("neighborhood")} placeholder="Bairro" className="store-input" />
+          <Input {...form.register("city")} placeholder="Cidade" className="store-input" />
+          <Input {...form.register("state")} placeholder="UF" className="store-input" />
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <select {...form.register("paymentMethod")} className="h-11 rounded-2xl border border-white/10 bg-white/5 px-4 text-sm text-white">
+          <select {...form.register("paymentMethod")} className="store-select">
             <option value="PIX">PIX</option>
-            <option value="CARD">Cartão</option>
+            <option value="CARD">Cartao</option>
           </select>
-          <select {...form.register("shippingMethod")} className="h-11 rounded-2xl border border-white/10 bg-white/5 px-4 text-sm text-white">
-            <option value="standard">Frete padrão</option>
+          <select {...form.register("shippingMethod")} className="store-select">
+            <option value="standard">Frete padrao</option>
             <option value="express">Frete expresso</option>
           </select>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <Input {...form.register("couponCode")} placeholder="Cupom" className="border-white/10 bg-white/5 text-white" />
-          <Input {...form.register("notes")} placeholder="Observações do pedido" className="border-white/10 bg-white/5 text-white" />
+          <Input {...form.register("couponCode")} placeholder="Cupom" className="store-input" />
+          <Input {...form.register("notes")} placeholder="Observacoes do pedido" className="store-input" />
         </div>
-        <Button type="submit" disabled={isPending} className="h-12 w-full rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+        <Button type="submit" disabled={isPending} className="h-12 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
           Confirmar pedido
         </Button>
       </form>
 
-      <aside className="surface-panel h-fit space-y-5 p-6 lg:sticky lg:top-28">
+      <aside className="store-panel h-fit space-y-5 p-6 lg:sticky lg:top-28">
         <div>
-          <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-light-gray">Resumo do pedido</p>
-          <h3 className="mt-2 font-heading text-3xl text-white">Compra segura</h3>
+          <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-warm-gray">Resumo do pedido</p>
+          <h3 className="mt-2 font-heading text-3xl text-brand-black">Compra segura</h3>
         </div>
         <div className="space-y-4">
           {items.map((item) => (
             <div key={item.variantId} className="flex items-center gap-3">
-              <div className="relative size-16 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <div className="relative size-16 overflow-hidden rounded-lg border border-brand-black/10 bg-[#ece6e1]">
                 <Image src={item.imageUrl} alt={item.productName} fill className="object-cover" sizes="64px" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-white">{item.productName}</p>
-                <p className="text-xs text-brand-light-gray">Tam. {item.sizeLabel} • Qtd. {item.quantity}</p>
+                <p className="text-sm font-medium text-brand-black">{item.productName}</p>
+                <p className="text-xs text-brand-warm-gray">Tam. {item.sizeLabel} / Qtd. {item.quantity}</p>
               </div>
-              <p className="text-sm text-white">{formatCurrency(item.unitPriceCents * item.quantity)}</p>
+              <p className="text-sm text-brand-black">{formatCurrency(item.unitPriceCents * item.quantity)}</p>
             </div>
           ))}
         </div>
-        <div className="space-y-3 border-t border-white/8 pt-4 text-sm text-brand-light-gray">
+        <div className="space-y-3 border-t border-brand-black/8 pt-4 text-sm text-brand-charcoal">
           <div className="flex items-center justify-between">
             <span>Subtotal</span>
-            <span className="text-white">{formatCurrency(subtotal)}</span>
+            <span className="text-brand-black">{formatCurrency(subtotal)}</span>
           </div>
           <div className="flex items-center justify-between">
             <span>Frete</span>
-            <span className="text-white">Calculado no servidor</span>
+            <span className="text-brand-black">Calculado no servidor</span>
           </div>
           <div className="flex items-center justify-between text-base font-semibold">
-            <span className="text-white">Total estimado</span>
-            <span className="text-white">{formatCurrency(subtotal)}</span>
+            <span className="text-brand-black">Total estimado</span>
+            <span className="text-brand-black">{formatCurrency(subtotal)}</span>
           </div>
         </div>
       </aside>
@@ -275,9 +257,9 @@ export function WishlistView() {
   if (!items.length) {
     return (
       <EmptyState
-        title="Sua wishlist está vazia"
+        title="Sua wishlist esta vazia"
         description="Salve seus pares preferidos para comparar, voltar depois e comprar no melhor momento."
-        actionLabel="Explorar catálogo"
+        actionLabel="Explorar catalogo"
         actionHref="/shop"
       />
     );
@@ -286,24 +268,24 @@ export function WishlistView() {
   return (
     <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {items.map((item) => (
-        <article key={item.id} className="surface-panel overflow-hidden">
-          <div className="relative aspect-[4/4.5] overflow-hidden">
+        <article key={item.id} className="store-panel overflow-hidden">
+          <div className="relative aspect-[4/4.5] overflow-hidden bg-[#ece6e1]">
             <Image src={item.image} alt={item.name} fill className="object-cover" sizes="33vw" />
           </div>
           <div className="space-y-4 p-5">
             <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-brand-light-gray">{item.brand}</p>
-              <h2 className="mt-2 font-heading text-3xl text-white">{item.name}</h2>
-              <p className="mt-2 text-sm text-brand-light-gray">{item.shortDescription}</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-brand-warm-gray">{item.brand}</p>
+              <h2 className="mt-2 font-heading text-3xl text-brand-black">{item.name}</h2>
+              <p className="mt-2 text-sm text-brand-charcoal">{item.shortDescription}</p>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold text-white">{formatCurrency(item.salePriceInCents ?? item.basePriceInCents)}</span>
-              <Button type="button" variant="ghost" className="text-brand-light-gray hover:text-white" onClick={() => removeItem(item.id)}>
+              <span className="text-lg font-semibold text-brand-black">{formatCurrency(item.salePriceInCents ?? item.basePriceInCents)}</span>
+              <Button type="button" variant="ghost" className="text-brand-charcoal hover:text-brand-black" onClick={() => removeItem(item.id)}>
                 <Heart className="mr-2 size-4 fill-current" />
                 Remover
               </Button>
             </div>
-            <Button asChild className="h-11 w-full rounded-full bg-brand-wine text-white hover:bg-brand-wine/90">
+            <Button asChild className="h-11 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
               <Link href={`/shop/${item.slug}`}>Ver produto</Link>
             </Button>
           </div>
