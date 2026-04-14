@@ -9,44 +9,46 @@ import { Button } from "@/components/ui/button";
 import { instagramHighlights, testimonials, trustPillars } from "@/lib/site";
 import type { BannerData, HomePageData } from "@/types";
 
+const heroHighlights = [
+  { label: "Selecao", value: "Curadoria premium" },
+  { label: "Disponibilidade", value: "Drops limitados" },
+  { label: "Compra", value: "PIX e checkout agil" },
+];
+
 function HeroBanner({ banner }: { banner: BannerData }) {
   return (
     <section className="section-spacing pb-10">
       <Container>
-        <div className="store-panel-dark grid overflow-hidden lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="flex flex-col justify-between gap-10 p-8 sm:p-10 lg:p-14">
+        <div className="store-panel-dark grid overflow-hidden xl:grid-cols-[minmax(0,1.02fr)_minmax(480px,0.98fr)]">
+          <div className="flex flex-col justify-between gap-12 p-8 sm:p-10 xl:p-14">
             <div className="space-y-6">
               <span className="inline-flex w-fit rounded-md border border-white/10 bg-white/8 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand-light-gray">
                 {banner.eyebrow ?? "Sneaker Stream"}
               </span>
               <div className="space-y-4">
-                <h1 className="max-w-2xl font-heading text-5xl leading-none text-white sm:text-6xl lg:text-7xl">
+                <h1 className="max-w-[11ch] font-heading text-[3.5rem] leading-[0.88] text-white sm:text-[4.5rem] lg:text-[5rem] xl:text-[5.4rem]">
                   {banner.title}
                 </h1>
-                <p className="max-w-2xl text-base leading-8 text-brand-light-gray sm:text-lg">
+                <p className="max-w-xl text-base leading-8 text-brand-light-gray sm:text-lg">
                   {banner.subtitle ??
                     "Sneakers importados com curadoria precisa, compra segura e apresentacao mais alinhada ao valor do produto."}
                 </p>
               </div>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div className="grid gap-4 border-t border-white/10 pt-6 text-sm text-brand-light-gray sm:grid-cols-3">
-                <div className="space-y-1 border-l border-white/10 pl-4 first:border-l-0 first:pl-0">
-                  <p className="text-xs uppercase tracking-[0.22em] text-brand-light-gray">Selecao</p>
-                  <p className="text-2xl font-semibold text-white">Curadoria premium</p>
-                </div>
-                <div className="space-y-1 border-l border-white/10 pl-4">
-                  <p className="text-xs uppercase tracking-[0.22em] text-brand-light-gray">Disponibilidade</p>
-                  <p className="text-2xl font-semibold text-white">Drops limitados</p>
-                </div>
-                <div className="space-y-1 border-l border-white/10 pl-4">
-                  <p className="text-xs uppercase tracking-[0.22em] text-brand-light-gray">Compra</p>
-                  <p className="text-2xl font-semibold text-white">PIX e checkout agil</p>
-                </div>
+            <div className="space-y-6 border-t border-white/10 pt-6">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {heroHighlights.map((item) => (
+                  <div key={item.label} className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+                    <p className="text-xs uppercase tracking-[0.22em] text-brand-light-gray">{item.label}</p>
+                    <p className="mt-3 max-w-[12ch] text-xl font-semibold leading-tight text-white xl:text-2xl">
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-3 md:flex-row">
                 <Button asChild size="lg" className="h-12 rounded-lg bg-brand-wine px-7 text-white hover:bg-brand-wine/90">
                   <Link href={banner.ctaHref ?? "/shop"} className="inline-flex items-center gap-2">
                     {banner.ctaLabel ?? "Explorar catalogo"}
@@ -65,7 +67,7 @@ function HeroBanner({ banner }: { banner: BannerData }) {
             </div>
           </div>
 
-          <div className="relative min-h-[360px] overflow-hidden border-t border-white/10 lg:border-l lg:border-t-0">
+          <div className="relative min-h-[380px] overflow-hidden border-t border-white/10 xl:border-l xl:border-t-0">
             <Image
               src={banner.imageUrl ?? "/images/placeholder-product.svg"}
               alt={banner.title}
