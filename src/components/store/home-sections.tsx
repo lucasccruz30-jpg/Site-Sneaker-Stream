@@ -115,16 +115,28 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
               <p className="mt-2 text-sm font-medium text-white">Visual forte, leitura limpa e foco total no produto.</p>
             </div>
 
-            <div className="absolute bottom-6 left-6 right-6 grid gap-4 lg:grid-cols-[1fr_auto]">
-              <div className="rounded-2xl border border-white/10 bg-black/32 p-5 backdrop-blur">
-                <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Experiencia premium</p>
-                <p className="mt-3 max-w-md text-sm leading-7 text-white/88">
-                  Navegacao mais objetiva, fotos maiores, contexto comercial mais forte e decisoes com menos atrito.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/32 p-5 backdrop-blur">
-                <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Atendimento</p>
-                <p className="mt-3 text-sm leading-7 text-white/88">Suporte rapido para numeracao, pagamento e autenticidade.</p>
+            <div className="absolute inset-x-6 bottom-6 hidden xl:block">
+              <div className="rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(16,16,16,0.46),rgba(16,16,16,0.3))] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+                <div className="grid gap-5 xl:grid-cols-[1.15fr_0.85fr_0.85fr]">
+                  <div>
+                    <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Experiencia premium</p>
+                    <p className="mt-3 max-w-sm text-sm leading-7 text-white/88">
+                      Navegacao mais objetiva, fotos maiores e uma hierarquia pensada para valorizar produto e facilitar a compra.
+                    </p>
+                  </div>
+                  <div className="border-l border-white/10 pl-5">
+                    <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Atendimento consultivo</p>
+                    <p className="mt-3 text-sm leading-7 text-white/88">
+                      Suporte rapido para numeracao, pagamento e autenticidade antes da decisao.
+                    </p>
+                  </div>
+                  <div className="border-l border-white/10 pl-5">
+                    <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Compra sem atrito</p>
+                    <p className="mt-3 text-sm leading-7 text-white/88">
+                      Checkout mais limpo, PIX destacado e menos friccao no mobile e no desktop.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
