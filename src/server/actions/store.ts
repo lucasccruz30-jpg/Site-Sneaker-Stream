@@ -1,9 +1,10 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { hash } from "bcryptjs";
 
 import { auth } from "@/auth";
+import { storefrontCache } from "@/lib/cache-tags";
 import { calculateOrderTotals, generatePixCode } from "@/lib/payments";
 import { prisma } from "@/lib/prisma";
 import { registerSchema } from "@/lib/validators/auth";
@@ -236,6 +237,11 @@ export async function createOrderAction(input: unknown) {
   revalidatePath("/admin");
   revalidatePath("/admin/pedidos");
   revalidatePath("/meus-pedidos");
+  revalidateTag(storefrontCache.tags.products, "max");
+  revalidateTag(storefrontCache.tags.catalog, "max");
+  revalidateTag(storefrontCache.tags.home, "max");
+  revalidateTag(storefrontCache.tags.drops, "max");
+  revalidateTag(storefrontCache.tags.recommendations, "max");
 
   return {
     success: true,

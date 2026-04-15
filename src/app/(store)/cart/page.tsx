@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { CartView } from "@/components/store/storefront-shopping";
-import { getHomePageData, getSiteSettings } from "@/server/queries/storefront";
+import { getRecommendedProducts, getSiteSettings } from "@/server/queries/storefront";
 
 export const metadata: Metadata = {
   title: "Carrinho",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CartPage() {
-  const [homeData, settings] = await Promise.all([getHomePageData(), getSiteSettings()]);
+  const [recommendedProducts, settings] = await Promise.all([getRecommendedProducts(4), getSiteSettings()]);
 
   return (
     <>
@@ -22,7 +22,7 @@ export default async function CartPage() {
       />
       <section className="section-spacing">
         <Container>
-          <CartView recommendedProducts={homeData.bestSellers} settings={settings} />
+          <CartView recommendedProducts={recommendedProducts} settings={settings} />
         </Container>
       </section>
     </>

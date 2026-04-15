@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Search, ShieldCheck, Truck, User } from "lucide-react";
 
-import { auth } from "@/auth";
 import { BrandMark } from "@/components/layout/brand-mark";
 import { HeaderActions } from "@/components/layout/header-actions";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -12,7 +11,7 @@ import { mainNavigation } from "@/lib/site";
 import { getSiteSettings } from "@/server/queries/storefront";
 
 export async function SiteHeader() {
-  const [session, settings] = await Promise.all([auth(), getSiteSettings()]);
+  const settings = await getSiteSettings();
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-black/8 bg-[rgba(250,247,243,0.86)] backdrop-blur-xl">
@@ -36,7 +35,7 @@ export async function SiteHeader() {
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <MobileNav />
-            <BrandMark compact />
+            <BrandMark compact priority />
           </div>
 
           <nav className="hidden items-center gap-7 xl:flex">
@@ -65,7 +64,7 @@ export async function SiteHeader() {
               size="icon"
               className="border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
             >
-              <Link href={session?.user ? "/minha-conta" : "/login"}>
+              <Link href="/minha-conta">
                 <User className="size-4" />
               </Link>
             </Button>

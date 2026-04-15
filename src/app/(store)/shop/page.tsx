@@ -7,8 +7,8 @@ import { PageHero } from "@/components/shared/page-hero";
 import { CatalogPagination, CatalogSidebar, CatalogToolbar } from "@/components/store/catalog";
 import { ProductGrid } from "@/components/store/product-card";
 import { Button } from "@/components/ui/button";
-import { getCatalogPageData, getHomePageData } from "@/server/queries/storefront";
-import type { CatalogSearchInput } from "@/types";
+import { getCatalogPageData, getShopDiscoveryData } from "@/server/queries/storefront";
+import type { CatalogSearchInput, ShopDiscoveryData } from "@/types";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -25,8 +25,8 @@ function ShopTopics({
   categories,
   brands,
 }: {
-  categories: Awaited<ReturnType<typeof getHomePageData>>["featuredCategories"];
-  brands: Awaited<ReturnType<typeof getHomePageData>>["featuredBrands"];
+  categories: ShopDiscoveryData["featuredCategories"];
+  brands: ShopDiscoveryData["featuredBrands"];
 }) {
   return (
     <section className="pb-8">
@@ -90,7 +90,7 @@ export default async function ShopPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const resolvedSearchParams = normalizeSearchParams(await searchParams);
-  const [data, homeData] = await Promise.all([getCatalogPageData(resolvedSearchParams), getHomePageData()]);
+  const [data, discoveryData] = await Promise.all([getCatalogPageData(resolvedSearchParams), getShopDiscoveryData()]);
   const totalPages = Math.max(Math.ceil(data.total / data.pageSize), 1);
 
   const hrefBuilder = (page: number) => {
@@ -111,7 +111,7 @@ export default async function ShopPage({
         title="Catalogo premium para encontrar o proximo par com menos atrito e mais desejo"
         description="Filtros por marca, numeracao, preco e disponibilidade organizados para acelerar descoberta, comparacao e clique ate a pagina do produto."
       />
-      <ShopTopics categories={homeData.featuredCategories} brands={homeData.featuredBrands} />
+      <ShopTopics categories={discoveryData.featuredCategories} brands={discoveryData.featuredBrands} />
       <section className="section-spacing pt-0">
         <Container className="grid gap-8 lg:grid-cols-[320px_1fr]">
           <CatalogSidebar filters={data.filters} searchParams={resolvedSearchParams} />

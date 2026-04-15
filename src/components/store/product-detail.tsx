@@ -95,7 +95,7 @@ export function ProductDetail({
                 alt={product.name}
                 fill
                 className="object-cover transition duration-500 hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 52vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute left-4 top-4 rounded-md border border-white/70 bg-white/88 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
                 Visual premium
@@ -113,7 +113,13 @@ export function ProductDetail({
                   selectedImage === image.url ? "border-brand-wine" : "border-brand-black/10"
                 } bg-white`}
               >
-                <Image src={image.url} alt={image.alt} fill className="object-cover" sizes="20vw" />
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 22vw, 120px"
+                />
               </button>
             ))}
           </div>

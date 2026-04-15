@@ -1,8 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 import { auth } from "@/auth";
+import { storefrontCache } from "@/lib/cache-tags";
 import { prisma } from "@/lib/prisma";
 import { slugify } from "@/lib/utils";
 import {
@@ -157,6 +158,11 @@ export async function saveProductAction(input: unknown) {
   revalidatePath("/shop");
   revalidatePath(`/shop/${product.slug}`);
   revalidatePath("/admin/produtos");
+  revalidateTag(storefrontCache.tags.products, "max");
+  revalidateTag(storefrontCache.tags.catalog, "max");
+  revalidateTag(storefrontCache.tags.home, "max");
+  revalidateTag(storefrontCache.tags.drops, "max");
+  revalidateTag(storefrontCache.tags.recommendations, "max");
 
   return {
     success: true,
@@ -176,6 +182,11 @@ export async function deleteProductAction(productId: string) {
   revalidatePath("/shop");
   revalidatePath("/admin/produtos");
   revalidatePath(`/shop/${product.slug}`);
+  revalidateTag(storefrontCache.tags.products, "max");
+  revalidateTag(storefrontCache.tags.catalog, "max");
+  revalidateTag(storefrontCache.tags.home, "max");
+  revalidateTag(storefrontCache.tags.drops, "max");
+  revalidateTag(storefrontCache.tags.recommendations, "max");
 
   return {
     success: true,
@@ -213,6 +224,8 @@ export async function saveCategoryAction(input: unknown) {
   revalidatePath("/");
   revalidatePath("/shop");
   revalidatePath("/admin/categorias");
+  revalidateTag(storefrontCache.tags.catalog, "max");
+  revalidateTag(storefrontCache.tags.discovery, "max");
 
   return { success: true, message: "Categoria salva com sucesso." };
 }
@@ -247,6 +260,8 @@ export async function saveBrandAction(input: unknown) {
   revalidatePath("/");
   revalidatePath("/shop");
   revalidatePath("/admin/marcas");
+  revalidateTag(storefrontCache.tags.catalog, "max");
+  revalidateTag(storefrontCache.tags.discovery, "max");
 
   return { success: true, message: "Marca salva com sucesso." };
 }
@@ -322,6 +337,9 @@ export async function saveBannerAction(input: unknown) {
   revalidatePath("/");
   revalidatePath("/drops");
   revalidatePath("/admin/banners");
+  revalidateTag(storefrontCache.tags.banners, "max");
+  revalidateTag(storefrontCache.tags.home, "max");
+  revalidateTag(storefrontCache.tags.drops, "max");
 
   return { success: true, message: "Banner salvo com sucesso." };
 }
@@ -366,6 +384,7 @@ export async function saveContentPageAction(input: unknown) {
 
   revalidatePath(`/${data.slug}`);
   revalidatePath("/admin/conteudo");
+  revalidateTag(storefrontCache.tags.content, "max");
 
   return { success: true, message: "Página institucional salva com sucesso." };
 }
@@ -389,6 +408,8 @@ export async function saveSettingsAction(input: unknown) {
 
   revalidatePath("/");
   revalidatePath("/admin/configuracoes");
+  revalidateTag(storefrontCache.tags.settings, "max");
+  revalidateTag(storefrontCache.tags.home, "max");
 
   return { success: true, message: "Configurações da loja salvas com sucesso." };
 }
@@ -437,6 +458,10 @@ export async function moderateReviewAction(input: unknown) {
 
   revalidatePath("/admin/avaliacoes");
   revalidatePath("/shop");
+  revalidateTag(storefrontCache.tags.products, "max");
+  revalidateTag(storefrontCache.tags.catalog, "max");
+  revalidateTag(storefrontCache.tags.home, "max");
+  revalidateTag(storefrontCache.tags.recommendations, "max");
 
   return { success: true, message: "Avaliação atualizada." };
 }

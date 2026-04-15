@@ -96,13 +96,20 @@ export type HomePageData = {
   heroBanners: BannerData[];
   launchProducts: ProductCardData[];
   bestSellers: ProductCardData[];
-  offers: ProductCardData[];
-  featuredBrands: Array<{ id: string; name: string; slug: string; description?: string | null }>;
-  featuredCategories: Array<{ id: string; name: string; slug: string; description?: string | null; imageUrl?: string | null }>;
   weekHighlights: ProductCardData[];
   exclusiveProducts: ProductCardData[];
-  testimonialProducts: ProductCardData[];
   settings: SiteSettingsData;
+};
+
+export type ShopDiscoveryData = {
+  featuredBrands: Array<{ id: string; name: string; slug: string; description?: string | null }>;
+  featuredCategories: Array<{ id: string; name: string; slug: string; description?: string | null; imageUrl?: string | null }>;
+};
+
+export type DropsPageData = {
+  launchProducts: ProductCardData[];
+  exclusiveProducts: ProductCardData[];
+  offers: ProductCardData[];
 };
 
 export type CatalogFiltersData = {

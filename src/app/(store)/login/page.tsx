@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { Container } from "@/components/shared/container";
@@ -8,6 +9,18 @@ export const metadata: Metadata = {
   title: "Login",
   description: "Entre na sua conta para acompanhar pedidos, salvar enderecos e comprar com mais rapidez.",
 };
+
+function LoginFallback() {
+  return (
+    <div className="store-panel space-y-4 p-6">
+      <div className="h-5 w-20 animate-pulse rounded-full bg-brand-black/8" />
+      <div className="h-12 animate-pulse rounded-xl bg-brand-black/8" />
+      <div className="h-5 w-16 animate-pulse rounded-full bg-brand-black/8" />
+      <div className="h-12 animate-pulse rounded-xl bg-brand-black/8" />
+      <div className="h-11 animate-pulse rounded-lg bg-brand-black/10" />
+    </div>
+  );
+}
 
 export default function LoginPage() {
   return (
@@ -25,7 +38,9 @@ export default function LoginPage() {
               Consulte pedidos, acompanhe entregas, salve informacoes de entrega e mantenha sua jornada sempre pronta para o proximo drop.
             </p>
           </div>
-          <LoginForm />
+          <Suspense fallback={<LoginFallback />}>
+            <LoginForm />
+          </Suspense>
         </Container>
       </section>
     </>

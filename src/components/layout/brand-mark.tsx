@@ -7,10 +7,12 @@ export function BrandMark({
   compact = false,
   href = "/",
   inverse = false,
+  priority = false,
 }: {
   compact?: boolean;
   href?: string;
   inverse?: boolean;
+  priority?: boolean;
 }) {
   return (
     <Link href={href} className="group inline-flex items-center gap-3">
@@ -27,7 +29,7 @@ export function BrandMark({
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
           sizes={compact ? "40px" : "56px"}
-          priority
+          priority={priority}
         />
       </div>
       <div className={cn("space-y-0.5", compact && "hidden sm:block")}>

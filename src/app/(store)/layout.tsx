@@ -1,8 +1,6 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
-export const dynamic = "force-dynamic";
-
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="store-shell min-h-screen">

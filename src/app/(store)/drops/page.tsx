@@ -1,11 +1,11 @@
-import { getHomePageData } from "@/server/queries/storefront";
+import { getDropsPageData } from "@/server/queries/storefront";
 
 import { Container } from "@/components/shared/container";
 import { PageHero } from "@/components/shared/page-hero";
 import { ShowcaseSection } from "@/components/store/home-sections";
 
 export default async function DropsPage() {
-  const data = await getHomePageData();
+  const data = await getDropsPageData();
 
   return (
     <>
