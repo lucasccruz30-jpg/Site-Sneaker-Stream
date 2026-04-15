@@ -15,7 +15,7 @@ import { NewsletterForm } from "@/components/store/storefront-forms";
 import { ProductGrid } from "@/components/store/product-card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, getInstallmentText } from "@/lib/format";
-import { instagramHighlights, testimonials, trustPillars } from "@/lib/site";
+import { testimonials, trustPillars } from "@/lib/site";
 import type { BannerData, HomePageData, ProductCardData, SiteSettingsData } from "@/types";
 
 const heroSignals = [
@@ -40,6 +40,33 @@ const commerceSignals = [
   { icon: Sparkles, title: "Curadoria premium", text: "Mix pensado para vender melhor e elevar a percepcao da marca." },
 ];
 
+const topicLinks = [
+  {
+    eyebrow: "Shop",
+    title: "Catalogo completo",
+    description: "Marcas, numeracoes, preco e filtros para descoberta mais rapida.",
+    href: "/shop",
+  },
+  {
+    eyebrow: "Drops",
+    title: "Lancamentos e exclusividades",
+    description: "Pares com giro mais rapido, novidade e escassez elegante.",
+    href: "/drops",
+  },
+  {
+    eyebrow: "Autenticidade",
+    title: "Como garantimos confianca",
+    description: "Entenda o processo, atendimento e a leitura profissional da operacao.",
+    href: "/autenticidade",
+  },
+  {
+    eyebrow: "Marca",
+    title: "Lifestyle e posicionamento",
+    description: "Conheca melhor a identidade da Sneaker Stream e o universo da curadoria.",
+    href: "/sobre",
+  },
+];
+
 function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSettingsData }) {
   const freeShippingThreshold = settings.freeShippingThresholdCents
     ? formatCurrency(settings.freeShippingThresholdCents)
@@ -62,12 +89,12 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
                 </div>
 
                 <div className="space-y-5">
-                  <h1 className="max-w-[10ch] font-heading text-[3.35rem] leading-[0.88] text-white sm:text-[4.5rem] lg:text-[5rem] xl:text-[5.5rem]">
+                  <h1 className="max-w-[10ch] font-heading text-[3.2rem] leading-[0.88] text-white sm:text-[4.5rem] lg:text-[5rem] xl:text-[5.4rem]">
                     {banner.title}
                   </h1>
                   <p className="max-w-xl text-base leading-8 text-brand-light-gray sm:text-lg">
                     {banner.subtitle ??
-                      "Sneakers importados para quem compra autenticidade, exclusividade e presenca visual com uma experiencia de compra mais profissional."}
+                      "Sneakers importados para quem compra autenticidade, exclusividade e presenca visual com uma experiencia de compra profissional."}
                   </p>
                 </div>
 
@@ -84,7 +111,7 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
                     variant="outline"
                     className="h-12 rounded-lg border-white/12 bg-white/6 px-7 text-white hover:bg-white/10"
                   >
-                    <Link href="/autenticidade">Ver autenticidade</Link>
+                    <Link href="/drops">Ver drops</Link>
                   </Button>
                 </div>
               </div>
@@ -112,7 +139,7 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
 
               <div className="absolute left-6 top-6 rounded-xl border border-white/12 bg-black/30 px-4 py-3 backdrop-blur">
                 <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Drop selecionado</p>
-                <p className="mt-2 text-sm font-medium text-white">Produto valorizado por foto grande e leitura limpa.</p>
+                <p className="mt-2 text-sm font-medium text-white">Foto grande, leitura limpa e foco total no produto.</p>
               </div>
 
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/28 to-transparent px-6 pb-6 pt-16">
@@ -193,7 +220,7 @@ function EditorialSpotlight({
                     {featuredProduct.name}
                   </h3>
                   <p className="mt-4 max-w-xl text-sm leading-8 text-brand-charcoal">
-                    Um bloco principal para valorizar o produto de forma mais editorial, com mais respiro, mais imagem e uma copy que conduz para a compra.
+                    Um bloco principal para valorizar o produto com mais imagem, mais respiro e uma copy que conduz para a compra sem alongar a home inteira.
                   </p>
                 </div>
               </div>
@@ -217,7 +244,7 @@ function EditorialSpotlight({
                     variant="outline"
                     className="h-11 rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
                   >
-                    <Link href="/shop?highlight=new">Ver lancamentos</Link>
+                    <Link href="/shop?highlight=new">Ver novidade</Link>
                   </Button>
                 </div>
               </div>
@@ -264,6 +291,41 @@ function EditorialSpotlight({
   );
 }
 
+function TopicHubSection() {
+  return (
+    <section className="store-section-band section-spacing">
+      <Container className="space-y-8">
+        <SectionHeading
+          eyebrow="Explorar por topico"
+          title="Uma home mais curta e paginas mais focadas"
+          description="Em vez de concentrar tudo na entrada, organizamos a descoberta por temas para deixar a navegacao mais limpa e objetiva."
+        />
+
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {topicLinks.map((topic) => (
+            <Link
+              key={topic.href}
+              href={topic.href}
+              className="store-panel group relative overflow-hidden p-6 transition hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(85,13,26,0.12),transparent_34%)] opacity-70 transition group-hover:opacity-100" />
+              <div className="relative">
+                <p className="text-[0.68rem] uppercase tracking-[0.22em] text-brand-warm-gray">{topic.eyebrow}</p>
+                <h3 className="mt-4 font-heading text-4xl leading-none text-brand-black">{topic.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-brand-charcoal">{topic.description}</p>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-black">
+                  Acessar pagina
+                  <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 export function ShowcaseSection({
   eyebrow,
   title,
@@ -296,140 +358,6 @@ export function ShowcaseSection({
   );
 }
 
-function SplitMerchandising({
-  bestSellers,
-  offers,
-}: {
-  bestSellers: ProductCardData[];
-  offers: ProductCardData[];
-}) {
-  const sections = [
-    {
-      eyebrow: "Mais vendidos",
-      title: "Os pares que ja provaram desejo",
-      description: "Produtos com boa aderencia visual e resposta comercial mais forte.",
-      products: bestSellers,
-      href: "/shop?sort=bestsellers",
-    },
-    {
-      eyebrow: "Ofertas",
-      title: "Condicoes especiais com apresentacao premium",
-      description: "Desconto e valor percebido trabalhando juntos, sem cara de liquidação generica.",
-      products: offers,
-      href: "/shop?highlight=sale",
-    },
-  ];
-
-  return (
-    <section className="store-section-band section-spacing">
-      <Container className="grid gap-5 xl:grid-cols-2">
-        {sections.map((section) => (
-          <div key={section.eyebrow} className="store-panel p-6 sm:p-7">
-            <div className="flex items-end justify-between gap-4">
-              <SectionHeading
-                eyebrow={section.eyebrow}
-                title={section.title}
-                description={section.description}
-              />
-              <Button
-                asChild
-                variant="outline"
-                className="hidden rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white md:inline-flex"
-              >
-                <Link href={section.href}>Ver mais</Link>
-              </Button>
-            </div>
-
-            <div className="mt-8 space-y-4">
-              {section.products.slice(0, 3).map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/shop/${product.slug}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-brand-black/8 bg-white/72 p-4 transition hover:border-brand-wine/20"
-                >
-                  <div className="relative size-24 overflow-hidden rounded-xl bg-[#e9e0d9]">
-                    <Image src={product.image} alt={product.name} fill className="object-cover" sizes="96px" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[0.68rem] uppercase tracking-[0.16em] text-brand-warm-gray">{product.brand}</p>
-                    <h3 className="mt-2 truncate font-heading text-3xl leading-none text-brand-black">{product.name}</h3>
-                    <p className="mt-2 text-sm text-brand-charcoal">
-                      {formatCurrency(product.salePriceInCents ?? product.basePriceInCents)}
-                    </p>
-                  </div>
-                  <ArrowRight className="size-4 text-brand-black transition group-hover:translate-x-1" />
-                </Link>
-              ))}
-            </div>
-
-            <Button
-              asChild
-              variant="outline"
-              className="mt-6 w-full rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white md:hidden"
-            >
-              <Link href={section.href}>Ver vitrine</Link>
-            </Button>
-          </div>
-        ))}
-      </Container>
-    </section>
-  );
-}
-
-function BrandCategorySection({ data }: { data: HomePageData }) {
-  return (
-    <section className="section-spacing">
-      <Container className="space-y-8">
-        <SectionHeading
-          eyebrow="Categorias e marcas"
-          title="Descoberta organizada por estilo, universo e repertorio de marca"
-          description="A navegacao fica mais coerente quando o cliente entende rapido onde clicar e por que aquela curadoria existe."
-        />
-
-        <div className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {data.featuredCategories.slice(0, 4).map((category, index) => (
-              <Link
-                key={category.id}
-                href={`/shop?category=${category.slug}`}
-                className="store-panel group relative overflow-hidden p-6 transition hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(85,13,26,0.12),transparent_32%)] opacity-80 transition group-hover:opacity-100" />
-                <div className="relative">
-                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-brand-warm-gray">
-                    Categoria {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-4 font-heading text-4xl leading-none text-brand-black">{category.name}</h3>
-                  <p className="mt-3 text-sm leading-7 text-brand-charcoal">
-                    {category.description ?? "Selecao refinada para acelerar a descoberta de produto."}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="store-panel-dark p-7 sm:p-8">
-            <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Marcas em destaque</p>
-            <h3 className="mt-4 max-w-[11ch] font-heading text-4xl leading-[0.92] text-white sm:text-5xl">
-              Nomes fortes para sustentar desejo e credibilidade.
-            </h3>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {data.featuredBrands.map((brand) => (
-                <div key={brand.id} className="rounded-2xl border border-white/10 bg-white/[0.05] p-5">
-                  <p className="font-heading text-3xl leading-none text-white">{brand.name}</p>
-                  <p className="mt-3 text-sm leading-7 text-brand-light-gray">
-                    {brand.description ?? "Marca com leitura premium dentro da curadoria da Sneaker Stream."}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function TrustBand({ settings }: { settings: SiteSettingsData }) {
   const freeShippingThreshold = settings.freeShippingThresholdCents
     ? formatCurrency(settings.freeShippingThresholdCents)
@@ -444,7 +372,7 @@ function TrustBand({ settings }: { settings: SiteSettingsData }) {
               Confianca de marca
             </span>
             <h2 className="max-w-[10ch] font-heading text-4xl leading-[0.92] text-white sm:text-5xl">
-              Uma loja premium precisa parecer segura em cada detalhe.
+              A pagina inicial ficou menor, mas a confianca continua forte.
             </h2>
             <p className="max-w-xl text-sm leading-8 text-brand-light-gray sm:text-base">
               {settings.authenticityMessage} {freeShippingThreshold ? `Frete gratis acima de ${freeShippingThreshold}.` : ""}
@@ -468,91 +396,36 @@ function TrustBand({ settings }: { settings: SiteSettingsData }) {
   );
 }
 
-function SocialSection({ data }: { data: HomePageData }) {
+function SocialTeaserSection() {
   return (
-    <section className="store-section-band section-spacing">
-      <Container className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
-        <div className="space-y-8">
+    <section className="section-spacing">
+      <Container className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr]">
+        <div className="store-panel p-7 sm:p-8">
           <SectionHeading
-            eyebrow="Prova social"
-            title="Quando a marca parece real, a decisao de compra fica mais facil"
-            description="Depoimentos, consistencia visual e produto bem apresentado ajudam a reduzir duvida e elevar a confianca."
+            eyebrow="Marca e prova social"
+            title="Lifestyle, depoimentos e posicionamento agora ficam em uma pagina propria"
+            description="A home passa a vender mais rapido, enquanto o universo da marca continua acessivel para quem quer aprofundar confianca e repertorio."
           />
-
-          <div className="space-y-4">
-            {testimonials.map((testimonial) => (
-              <article key={testimonial.name} className="store-panel-muted p-6">
-                <div className="flex items-center gap-1 text-brand-wine">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={`${testimonial.name}-${index}`} className="size-4 fill-current" />
-                  ))}
-                </div>
-                <p className="mt-4 text-base leading-8 text-brand-charcoal">&quot;{testimonial.quote}&quot;</p>
-                <div className="mt-4">
-                  <p className="font-semibold text-brand-black">{testimonial.name}</p>
-                  <p className="text-sm text-brand-warm-gray">{testimonial.role}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <Button asChild className="mt-8 h-11 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+            <Link href="/sobre">Explorar pagina da marca</Link>
+          </Button>
         </div>
 
-        <div className="space-y-5">
-          <div className="grid gap-5 md:grid-cols-3">
-            {instagramHighlights.map((highlight) => (
-              <div key={highlight.title} className="store-panel group overflow-hidden">
-                <div className="relative aspect-[4/5.1] overflow-hidden bg-[#ece6e1]">
-                  <Image
-                    src={highlight.image}
-                    alt={highlight.title}
-                    fill
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-heading text-3xl leading-none text-brand-black">{highlight.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-brand-charcoal">{highlight.subtitle}</p>
-                </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {testimonials.slice(0, 2).map((testimonial) => (
+            <article key={testimonial.name} className="store-panel-muted p-6">
+              <div className="flex items-center gap-1 text-brand-wine">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={`${testimonial.name}-${index}`} className="size-4 fill-current" />
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="store-panel p-6">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <SectionHeading
-                eyebrow="Mais comentados"
-                title="Modelos que concentram mais atencao e interesse"
-                description="Produtos que ajudam a sustentar recorrencia de clique e leitura de desejo na home."
-              />
-              <Button
-                asChild
-                variant="outline"
-                className="w-fit rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
-              >
-                <Link href="/shop?sort=bestsellers">Ver shop</Link>
-              </Button>
-            </div>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {data.testimonialProducts.map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/shop/${product.slug}`}
-                  className="rounded-2xl border border-brand-black/8 bg-white/75 p-4 transition hover:border-brand-wine/20"
-                >
-                  <div className="relative aspect-[4/4.1] overflow-hidden rounded-xl bg-[#ece4de]">
-                    <Image src={product.image} alt={product.name} fill className="object-cover" sizes="33vw" />
-                  </div>
-                  <div className="mt-4">
-                    <p className="text-[0.68rem] uppercase tracking-[0.18em] text-brand-warm-gray">{product.brand}</p>
-                    <h3 className="mt-2 font-heading text-3xl leading-none text-brand-black">{product.name}</h3>
-                    <p className="mt-2 text-sm text-brand-charcoal">{product.reviewCount} avaliacoes</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+              <p className="mt-4 text-base leading-8 text-brand-charcoal">&quot;{testimonial.quote}&quot;</p>
+              <div className="mt-4">
+                <p className="font-semibold text-brand-black">{testimonial.name}</p>
+                <p className="text-sm text-brand-warm-gray">{testimonial.role}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </Container>
     </section>
@@ -596,24 +469,16 @@ export function HomePageSections({ data }: { data: HomePageData }) {
         featuredProduct={data.weekHighlights[0] ?? data.launchProducts[0]}
         supportProducts={[...(data.bestSellers ?? []), ...(data.exclusiveProducts ?? [])]}
       />
+      <TopicHubSection />
       <ShowcaseSection
         eyebrow="Lancamentos"
-        title="Os pares novos que puxam clique, desejo e curiosidade logo na entrada"
-        description="Uma vitrine principal para destacar o que acabou de chegar com leitura limpa, foto grande e CTA mais evidente."
+        title="Os pares novos que puxam clique e desejo logo na entrada"
+        description="Uma unica vitrine de produto na home para manter a pagina mais objetiva e deixar o restante distribuido nas paginas certas."
         products={data.launchProducts}
         href="/drops"
       />
-      <SplitMerchandising bestSellers={data.bestSellers} offers={data.offers} />
-      <BrandCategorySection data={data} />
       <TrustBand settings={data.settings} />
-      <ShowcaseSection
-        eyebrow="Sneakers exclusivos"
-        title="Escassez elegante para quem compra pela raridade e pela identidade visual"
-        description="Produtos mais seletivos apresentados com mais respiro e uma leitura de alto valor percebido."
-        products={data.exclusiveProducts}
-        href="/shop?highlight=exclusive"
-      />
-      <SocialSection data={data} />
+      <SocialTeaserSection />
       <NewsletterSection settings={data.settings} />
     </>
   );
