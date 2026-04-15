@@ -45,10 +45,10 @@ export default async function AboutPage() {
           <div className="max-w-3xl space-y-4">
             <p className="text-[0.72rem] uppercase tracking-[0.28em] text-brand-warm-gray">Lifestyle e repertorio</p>
             <h2 className="font-heading text-4xl text-brand-black sm:text-5xl">
-              O universo da marca agora fica aqui, sem pesar a home.
+              O universo da Sneaker Stream vai alem do catalogo.
             </h2>
             <p className="text-sm leading-8 text-brand-charcoal sm:text-base">
-              Reunimos nesta pagina o lado mais editorial da Sneaker Stream para que a home permaneca mais objetiva e vendedora.
+              Reunimos nesta pagina o lado mais editorial da marca para aprofundar repertorio, posicionamento e prova social.
             </p>
           </div>
 

@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Headphones,
-  ShieldCheck,
-  Sparkles,
-  Star,
-  Truck,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Container } from "@/components/shared/container";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -15,7 +8,7 @@ import { NewsletterForm } from "@/components/store/storefront-forms";
 import { ProductGrid } from "@/components/store/product-card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, getInstallmentText } from "@/lib/format";
-import { testimonials, trustPillars } from "@/lib/site";
+import { trustPillars } from "@/lib/site";
 import type { BannerData, HomePageData, ProductCardData, SiteSettingsData } from "@/types";
 
 const heroSignals = [
@@ -31,13 +24,6 @@ const heroSignals = [
     title: "Compra sem atrito",
     text: "Checkout direto, PIX com destaque e suporte rapido.",
   },
-];
-
-const commerceSignals = [
-  { icon: ShieldCheck, title: "Autenticidade garantida", text: "Cada par passa por conferencia interna antes do despacho." },
-  { icon: Truck, title: "Envio com rastreio", text: "Operacao organizada e acompanhamento claro ate a entrega." },
-  { icon: Headphones, title: "Atendimento consultivo", text: "Ajuda rapida para numeracao, pagamento e autenticidade." },
-  { icon: Sparkles, title: "Curadoria premium", text: "Mix pensado para vender melhor e elevar a percepcao da marca." },
 ];
 
 const topicLinks = [
@@ -155,30 +141,6 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
             </div>
           </div>
         </div>
-      </Container>
-    </section>
-  );
-}
-
-function CommerceStrip() {
-  return (
-    <section className="pb-10">
-      <Container className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {commerceSignals.map((item) => {
-          const Icon = item.icon;
-
-          return (
-            <div key={item.title} className="store-panel flex items-start gap-4 p-6">
-              <div className="inline-flex size-12 items-center justify-center rounded-lg bg-brand-wine/10 text-brand-wine">
-                <Icon className="size-5" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-brand-black">{item.title}</h3>
-                <p className="mt-2 text-sm leading-7 text-brand-charcoal">{item.text}</p>
-              </div>
-            </div>
-          );
-        })}
       </Container>
     </section>
   );
@@ -372,7 +334,7 @@ function TrustBand({ settings }: { settings: SiteSettingsData }) {
               Confianca de marca
             </span>
             <h2 className="max-w-[10ch] font-heading text-4xl leading-[0.92] text-white sm:text-5xl">
-              A pagina inicial ficou menor, mas a confianca continua forte.
+              Autenticidade, entrega e atendimento precisam parecer solidos em poucos segundos.
             </h2>
             <p className="max-w-xl text-sm leading-8 text-brand-light-gray sm:text-base">
               {settings.authenticityMessage} {freeShippingThreshold ? `Frete gratis acima de ${freeShippingThreshold}.` : ""}
@@ -390,42 +352,6 @@ function TrustBand({ settings }: { settings: SiteSettingsData }) {
               </div>
             ))}
           </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function SocialTeaserSection() {
-  return (
-    <section className="section-spacing">
-      <Container className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr]">
-        <div className="store-panel p-7 sm:p-8">
-          <SectionHeading
-            eyebrow="Marca e prova social"
-            title="Lifestyle, depoimentos e posicionamento agora ficam em uma pagina propria"
-            description="A home passa a vender mais rapido, enquanto o universo da marca continua acessivel para quem quer aprofundar confianca e repertorio."
-          />
-          <Button asChild className="mt-8 h-11 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
-            <Link href="/sobre">Explorar pagina da marca</Link>
-          </Button>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {testimonials.slice(0, 2).map((testimonial) => (
-            <article key={testimonial.name} className="store-panel-muted p-6">
-              <div className="flex items-center gap-1 text-brand-wine">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={`${testimonial.name}-${index}`} className="size-4 fill-current" />
-                ))}
-              </div>
-              <p className="mt-4 text-base leading-8 text-brand-charcoal">&quot;{testimonial.quote}&quot;</p>
-              <div className="mt-4">
-                <p className="font-semibold text-brand-black">{testimonial.name}</p>
-                <p className="text-sm text-brand-warm-gray">{testimonial.role}</p>
-              </div>
-            </article>
-          ))}
         </div>
       </Container>
     </section>
@@ -464,12 +390,11 @@ export function HomePageSections({ data }: { data: HomePageData }) {
   return (
     <>
       {hero ? <HeroBanner banner={hero} settings={data.settings} /> : null}
-      <CommerceStrip />
+      <TopicHubSection />
       <EditorialSpotlight
         featuredProduct={data.weekHighlights[0] ?? data.launchProducts[0]}
         supportProducts={[...(data.bestSellers ?? []), ...(data.exclusiveProducts ?? [])]}
       />
-      <TopicHubSection />
       <ShowcaseSection
         eyebrow="Lancamentos"
         title="Os pares novos que puxam clique e desejo logo na entrada"
@@ -478,7 +403,6 @@ export function HomePageSections({ data }: { data: HomePageData }) {
         href="/drops"
       />
       <TrustBand settings={data.settings} />
-      <SocialTeaserSection />
       <NewsletterSection settings={data.settings} />
     </>
   );
