@@ -6,7 +6,7 @@ export const siteConfig = {
   name: "Sneaker Stream",
   title: "Sneaker Stream | Sneakers importados com curadoria premium",
   description:
-    "Loja premium de tênis importados com foco em autenticidade, exclusividade e experiência de compra pensada para conversão.",
+    "Loja premium de tenis importados com foco em autenticidade, exclusividade e uma jornada de compra pensada para converter.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -17,10 +17,10 @@ export const siteConfig = {
   ogImage: "/brand/logo-primary.png",
   keywords: [
     "sneaker stream",
-    "tênis importados",
+    "tenis importados",
     "sneakers premium",
     "streetwear premium",
-    "jordans autênticos",
+    "jordans autenticos",
     "nike dunk importado",
   ],
   colors: {
@@ -34,16 +34,16 @@ export const siteConfig = {
 };
 
 export const mainNavigation: NavLink[] = [
-  { href: "/shop", label: "Shop", description: "Catálogo completo" },
-  { href: "/drops", label: "Drops", description: "Lançamentos e exclusividades" },
-  { href: "/autenticidade", label: "Autenticidade", description: "Compra com confiança" },
+  { href: "/shop", label: "Shop", description: "Catalogo completo" },
+  { href: "/drops", label: "Drops", description: "Lancamentos e exclusividades" },
+  { href: "/autenticidade", label: "Autenticidade", description: "Compra com confianca" },
   { href: "/sobre", label: "Marca", description: "Posicionamento da Sneaker Stream" },
   { href: "/contato", label: "Contato", description: "Atendimento consultivo" },
 ];
 
 export const institutionalLinks: NavLink[] = [
   { href: "/faq", label: "FAQ" },
-  { href: "/politica-de-troca-e-devolucao", label: "Troca e devolução" },
+  { href: "/politica-de-troca-e-devolucao", label: "Troca e devolucao" },
   { href: "/politica-de-entrega", label: "Entrega" },
   { href: "/politica-de-privacidade", label: "Privacidade" },
   { href: "/termos-de-uso", label: "Termos de uso" },
@@ -66,28 +66,28 @@ export const adminNavigation: NavLink[] = [
   { href: "/admin/clientes", label: "Clientes" },
   { href: "/admin/cupons", label: "Cupons" },
   { href: "/admin/banners", label: "Banners" },
-  { href: "/admin/avaliacoes", label: "Avaliações" },
-  { href: "/admin/conteudo", label: "Conteúdo" },
-  { href: "/admin/relatorios", label: "Relatórios" },
-  { href: "/admin/configuracoes", label: "Configurações" },
+  { href: "/admin/avaliacoes", label: "Avaliacoes" },
+  { href: "/admin/conteudo", label: "Conteudo" },
+  { href: "/admin/relatorios", label: "Relatorios" },
+  { href: "/admin/configuracoes", label: "Configuracoes" },
 ];
 
 export const trustPillars = [
   {
-    title: "Produtos autênticos",
-    description: "Curadoria premium e conferência interna antes do envio.",
+    title: "Autenticidade verificada",
+    description: "Cada par passa por conferencia interna antes do despacho, com leitura de produto e origem.",
   },
   {
     title: "Envio seguro",
-    description: "Rastreio, embalagem protegida e suporte próximo ao cliente.",
+    description: "Rastreio, embalagem protegida e atualizacao clara em cada etapa da entrega.",
   },
   {
-    title: "Atendimento rápido",
-    description: "Respostas ágeis para destravar a compra sem atrito.",
+    title: "Atendimento consultivo",
+    description: "Suporte agil para tirar duvidas de numeracao, autenticidade e pagamento sem atrito.",
   },
   {
-    title: "Compra facilitada",
-    description: "Checkout simples, PIX e fluxo otimizado para mobile.",
+    title: "Checkout pensado para converter",
+    description: "Fluxo direto, PIX com destaque comercial e experiencia otimizada para mobile.",
   },
 ];
 
@@ -95,36 +95,36 @@ export const testimonials = [
   {
     name: "Matheus Costa",
     role: "Cliente recorrente",
-    quote: "Experiência premium de verdade. Atendimento rápido, produto impecável e entrega muito segura.",
+    quote: "A compra foi direta, o atendimento respondeu rapido e o par chegou exatamente como esperado. Passa muita seguranca.",
   },
   {
     name: "Bruna Sales",
     role: "Colecionadora",
-    quote: "A curadoria é muito acima da média. Dá para perceber confiança e cuidado em cada detalhe.",
+    quote: "A curadoria foge do generico. O site e o atendimento fazem a loja parecer muito mais seria do que a media.",
   },
   {
     name: "Guilherme Nunes",
     role: "Streetwear enthusiast",
-    quote: "Consegui um modelo difícil de achar e o processo foi direto, bonito e profissional.",
+    quote: "Consegui um modelo dificil de achar com uma experiencia limpa, premium e sem enrolacao no checkout.",
   },
 ];
 
 export const instagramHighlights = [
   {
-    title: "Curadoria diária",
+    title: "Curadoria diaria",
     subtitle: "Looks, detalhes e drops em destaque",
     image:
       "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Lifestyle premium",
-    subtitle: "Sneakers com presença no dia a dia",
+    subtitle: "Sneakers com presenca no dia a dia",
     image:
       "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Exclusividade real",
-    subtitle: "Grades limitadas e reposição seletiva",
+    subtitle: "Grades limitadas e reposicao seletiva",
     image:
       "https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=1200&q=80",
   },
@@ -138,21 +138,21 @@ export const socialLinks = [
 
 export const faqs = [
   {
-    question: "Os produtos da Sneaker Stream são autênticos?",
+    question: "Os produtos da Sneaker Stream sao autenticos?",
     answer:
-      "Sim. Trabalhamos com curadoria, conferência interna e comunicação clara sobre origem, condição e disponibilidade.",
+      "Sim. Trabalhamos com curadoria, conferencia interna e comunicacao clara sobre origem, condicao e disponibilidade.",
   },
   {
-    question: "Existe opção de pagamento por PIX?",
-    answer: "Sim. O checkout já nasce preparado para PIX, com destaque comercial e benefício de desconto.",
+    question: "Existe opcao de pagamento por PIX?",
+    answer: "Sim. O checkout ja nasce preparado para PIX, com destaque comercial e beneficio de desconto.",
   },
   {
-    question: "O frete é calculado no checkout?",
+    question: "O frete e calculado no checkout?",
     answer:
-      "Sim. O cálculo é exibido no resumo do pedido e o fluxo prioriza clareza para reduzir abandono.",
+      "Sim. O calculo e exibido no resumo do pedido e o fluxo prioriza clareza para reduzir abandono.",
   },
   {
     question: "Como acompanho meu pedido?",
-    answer: "Na área de pedidos você acompanha status, código de rastreio e histórico da compra.",
+    answer: "Na area de pedidos voce acompanha status, codigo de rastreio e historico da compra.",
   },
 ];

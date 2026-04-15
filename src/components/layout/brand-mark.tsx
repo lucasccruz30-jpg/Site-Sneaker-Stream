@@ -3,12 +3,21 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-export function BrandMark({ compact = false, href = "/" }: { compact?: boolean; href?: string }) {
+export function BrandMark({
+  compact = false,
+  href = "/",
+  inverse = false,
+}: {
+  compact?: boolean;
+  href?: string;
+  inverse?: boolean;
+}) {
   return (
     <Link href={href} className="group inline-flex items-center gap-3">
       <div
         className={cn(
-          "relative overflow-hidden rounded-xl border border-brand-black/10 bg-white shadow-[0_12px_28px_rgba(19,19,19,0.08)] transition group-hover:border-brand-wine/20",
+          "relative overflow-hidden rounded-xl border bg-white shadow-[0_12px_28px_rgba(19,19,19,0.08)] transition group-hover:border-brand-wine/20",
+          inverse ? "border-white/12" : "border-brand-black/10",
           compact ? "size-10" : "size-14",
         )}
       >
@@ -22,8 +31,10 @@ export function BrandMark({ compact = false, href = "/" }: { compact?: boolean; 
         />
       </div>
       <div className={cn("space-y-0.5", compact && "hidden sm:block")}>
-        <p className="font-heading text-2xl leading-none tracking-wide text-brand-black">Sneaker Stream</p>
-        <p className="text-[0.68rem] uppercase tracking-[0.28em] text-brand-warm-gray">
+        <p className={cn("font-heading text-2xl leading-none tracking-wide", inverse ? "text-white" : "text-brand-black")}>
+          Sneaker Stream
+        </p>
+        <p className={cn("text-[0.68rem] uppercase tracking-[0.28em]", inverse ? "text-brand-light-gray" : "text-brand-warm-gray")}>
           Curadoria de sneakers premium
         </p>
       </div>

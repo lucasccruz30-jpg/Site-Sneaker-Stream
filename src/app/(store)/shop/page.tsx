@@ -10,7 +10,7 @@ import type { CatalogSearchInput } from "@/types";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Catálogo premium com filtros por marca, categoria, numeração, preço e disponibilidade.",
+  description: "Catalogo premium com filtros por marca, categoria, numeracao, preco e disponibilidade.",
 };
 
 function normalizeSearchParams(searchParams: Record<string, string | string[] | undefined>): CatalogSearchInput {
@@ -43,14 +43,14 @@ export default async function ShopPage({
     <>
       <PageHero
         eyebrow="Shop"
-        title="Catálogo premium com filtros pensados para decisão rápida"
-        description="Explore os sneakers mais desejados do mercado com busca inteligente, filtros completos e foco total em conversão."
+        title="Catalogo premium para encontrar o proximo par com menos atrito e mais desejo"
+        description="Filtros por marca, numeracao, preco e disponibilidade organizados para acelerar descoberta, comparacao e clique ate a pagina do produto."
       />
       <section className="section-spacing">
         <Container className="grid gap-8 lg:grid-cols-[320px_1fr]">
           <CatalogSidebar filters={data.filters} searchParams={resolvedSearchParams} />
           <div className="space-y-6">
-            <CatalogToolbar total={data.total} searchParams={resolvedSearchParams} />
+            <CatalogToolbar total={data.total} searchParams={resolvedSearchParams} filters={data.filters} />
             {data.products.length ? (
               <>
                 <ProductGrid products={data.products} />
@@ -60,7 +60,7 @@ export default async function ShopPage({
               <EmptyState
                 title="Nenhum produto encontrado"
                 description="Ajuste os filtros, teste outra busca ou volte para a curadoria principal."
-                actionLabel="Ver catálogo completo"
+                actionLabel="Ver catalogo completo"
                 actionHref="/shop"
               />
             )}

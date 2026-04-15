@@ -321,8 +321,8 @@ function buildCatalogWhere(searchParams: CatalogSearchInput): Prisma.ProductWher
     andFilters.push({ isExclusive: true });
   }
 
-  const minPrice = Number(searchParams.minPrice);
-  const maxPrice = Number(searchParams.maxPrice);
+  const minPrice = Math.round(Number(searchParams.minPrice) * 100);
+  const maxPrice = Math.round(Number(searchParams.maxPrice) * 100);
 
   if (!Number.isNaN(minPrice) && minPrice > 0) {
     andFilters.push({

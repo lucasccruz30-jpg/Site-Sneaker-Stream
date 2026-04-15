@@ -35,21 +35,21 @@ export function getInstallmentText(valueInCents: number, count = 10) {
 
 export function getStockStatus(totalStock: number) {
   if (totalStock <= 0) {
-    return { label: "Indisponível", tone: "destructive" as const };
+    return { label: "Indisponivel", tone: "destructive" as const };
   }
 
   if (totalStock <= 4) {
     return { label: "Pouco estoque", tone: "warning" as const };
   }
 
-  return { label: "Disponível", tone: "default" as const };
+  return { label: "Disponivel", tone: "default" as const };
 }
 
 export function orderStatusLabel(status: OrderStatus) {
   const labels: Record<OrderStatus, string> = {
     PENDING: "Pendente",
     PAID: "Pago",
-    PICKING: "Em separação",
+    PICKING: "Em separacao",
     SHIPPED: "Enviado",
     DELIVERED: "Entregue",
     CANCELLED: "Cancelado",
@@ -59,7 +59,7 @@ export function orderStatusLabel(status: OrderStatus) {
 }
 
 export function paymentMethodLabel(method: PaymentMethod) {
-  return method === "PIX" ? "PIX" : "Cartão";
+  return method === "PIX" ? "PIX" : "Cartao";
 }
 
 export function paymentStatusLabel(status: PaymentStatus) {
