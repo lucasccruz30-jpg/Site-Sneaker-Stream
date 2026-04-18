@@ -49,9 +49,9 @@ export function NewsletterForm() {
         });
       })}
     >
-      <Input {...form.register("name")} placeholder="Seu nome" className="store-input h-11 rounded-lg" />
-      <Input {...form.register("email")} placeholder="Seu melhor e-mail" className="store-input h-11 rounded-lg" />
-      <Button type="submit" disabled={isPending} className="h-11 rounded-lg bg-white text-brand-black hover:bg-brand-off-white">
+      <Input {...form.register("name")} placeholder="Seu nome" className="store-input h-11" />
+      <Input {...form.register("email")} placeholder="Seu melhor e-mail" className="store-input h-11" />
+      <Button type="submit" disabled={isPending} className="h-11 rounded-[0.3rem] bg-white text-brand-black hover:bg-brand-off-white">
         Receber drops
       </Button>
     </form>
@@ -101,9 +101,9 @@ export function ContactForm() {
       <Textarea
         {...form.register("message")}
         placeholder="Conte o que voce precisa e nossa equipe responde com rapidez."
-        className="min-h-40 rounded-lg border-brand-black/10 bg-white/88 text-brand-black placeholder:text-brand-warm-gray"
+        className="min-h-40 rounded-[0.3rem] border-brand-black/10 bg-white/92 text-brand-black placeholder:text-brand-warm-gray"
       />
-      <Button type="submit" disabled={isPending} className="h-11 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+      <Button type="submit" disabled={isPending} className="h-11 rounded-[0.3rem] bg-brand-black text-white hover:bg-brand-charcoal">
         Enviar mensagem
       </Button>
     </form>
@@ -152,7 +152,7 @@ export function LoginForm() {
         <label className="text-sm text-brand-charcoal">Senha</label>
         <Input {...form.register("password")} type="password" className="store-input" />
       </div>
-      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-[0.3rem] bg-brand-black text-white hover:bg-brand-charcoal">
         Entrar
       </Button>
     </form>
@@ -210,7 +210,7 @@ export function RegisterForm() {
         <Input {...form.register("password")} type="password" placeholder="Senha" className="store-input" />
         <Input {...form.register("confirmPassword")} type="password" placeholder="Confirmar senha" className="store-input" />
       </div>
-      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+      <Button type="submit" disabled={isPending} className="h-11 w-full rounded-[0.3rem] bg-brand-black text-white hover:bg-brand-charcoal">
         Criar conta
       </Button>
     </form>
@@ -254,9 +254,9 @@ export function ReviewForm({ product }: { product: ProductDetailData }) {
       <Textarea
         {...form.register("comment")}
         placeholder="Conte como foi sua experiencia com o produto e a compra."
-        className="min-h-32 rounded-lg border-brand-black/10 bg-white/88 text-brand-black placeholder:text-brand-warm-gray"
+        className="min-h-32 rounded-[0.3rem] border-brand-black/10 bg-white/92 text-brand-black placeholder:text-brand-warm-gray"
       />
-      <Button type="submit" disabled={isPending} className="rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+      <Button type="submit" disabled={isPending} className="rounded-[0.3rem] bg-brand-black text-white hover:bg-brand-charcoal">
         Enviar avaliacao
       </Button>
     </form>

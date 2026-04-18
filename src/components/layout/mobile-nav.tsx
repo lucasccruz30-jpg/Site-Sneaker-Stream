@@ -28,7 +28,7 @@ export function MobileNav() {
         <div className="mt-6 space-y-8">
           <BrandMark />
 
-          <div className="rounded-2xl border border-brand-black/8 bg-white/72 p-5">
+          <div className="rounded-[0.4rem] border border-brand-black/10 bg-white/84 p-5">
             <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-warm-gray">Sneaker Stream</p>
             <p className="mt-3 text-sm leading-7 text-brand-charcoal">
               Curadoria premium, autenticidade verificada e uma jornada pensada para compra rapida no mobile.
@@ -40,7 +40,7 @@ export function MobileNav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block rounded-xl border border-brand-black/8 bg-white/72 px-4 py-4"
+                className="block rounded-[0.35rem] border border-brand-black/10 bg-white/84 px-4 py-4"
               >
                 <span className="block font-medium text-brand-black">{link.label}</span>
                 {link.description ? (
@@ -53,11 +53,11 @@ export function MobileNav() {
           <div className="grid gap-3">
             <Link
               href="/login"
-              className="rounded-lg border border-brand-black/10 bg-white/72 px-4 py-3 text-sm text-brand-charcoal"
+              className="rounded-[0.3rem] border border-brand-black/10 bg-white/84 px-4 py-3 text-sm text-brand-charcoal"
             >
               Entrar
             </Link>
-            <Link href="/cadastro" className="rounded-lg bg-brand-wine px-4 py-3 text-sm font-medium text-white">
+            <Link href="/cadastro" className="rounded-[0.3rem] bg-brand-wine px-4 py-3 text-sm font-medium text-white">
               Criar conta
             </Link>
           </div>

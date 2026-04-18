@@ -14,22 +14,22 @@ export function HeaderActions() {
     <div className="flex items-center gap-2">
       <Link
         href="/wishlist"
-        className="relative inline-flex size-11 items-center justify-center rounded-lg border border-brand-black/10 bg-white/75 text-brand-black transition hover:border-brand-wine/20 hover:bg-white"
+        className="relative inline-flex size-11 items-center justify-center rounded-[0.3rem] border border-brand-black/10 bg-white/88 text-brand-black transition hover:border-brand-wine/20 hover:bg-white"
       >
         <Heart className="size-4" />
         {wishlistCount ? (
-          <span className="absolute -right-1.5 -top-1.5 inline-flex min-w-5 items-center justify-center rounded-md bg-brand-wine px-1.5 text-[0.65rem] font-semibold text-white">
+          <span className="absolute -right-1.5 -top-1.5 inline-flex min-w-5 items-center justify-center rounded-[0.22rem] bg-brand-wine px-1.5 text-[0.65rem] font-semibold text-white">
             {wishlistCount}
           </span>
         ) : null}
       </Link>
       <Link
         href="/cart"
-        className="relative inline-flex size-11 items-center justify-center rounded-lg border border-brand-black/10 bg-white/75 text-brand-black transition hover:border-brand-wine/20 hover:bg-white"
+        className="relative inline-flex size-11 items-center justify-center rounded-[0.3rem] border border-brand-black/10 bg-white/88 text-brand-black transition hover:border-brand-wine/20 hover:bg-white"
       >
         <ShoppingBag className="size-4" />
         {cartCount ? (
-          <span className="absolute -right-1.5 -top-1.5 inline-flex min-w-5 items-center justify-center rounded-md bg-brand-wine px-1.5 text-[0.65rem] font-semibold text-white">
+          <span className="absolute -right-1.5 -top-1.5 inline-flex min-w-5 items-center justify-center rounded-[0.22rem] bg-brand-wine px-1.5 text-[0.65rem] font-semibold text-white">
             {cartCount}
           </span>
         ) : null}

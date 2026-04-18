@@ -19,7 +19,7 @@ export function PageHero({
 }) {
   return (
     <section className="store-section-band relative overflow-hidden border-b border-brand-black/8">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(85,13,26,0.14),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0))]" />
       <Container className="relative grid gap-8 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end">
         <div className="max-w-4xl space-y-5">
           {eyebrow ? <span className="eyebrow-chip">{eyebrow}</span> : null}
@@ -35,7 +35,7 @@ export function PageHero({
 
             return (
               <div key={item.label} className="store-panel-muted flex items-center gap-3 p-4">
-                <div className="inline-flex size-11 items-center justify-center rounded-lg bg-brand-wine/10 text-brand-wine">
+                <div className="inline-flex size-11 items-center justify-center rounded-[0.3rem] bg-brand-wine/10 text-brand-wine">
                   <Icon className="size-4" />
                 </div>
                 <p className="text-sm font-medium text-brand-black">{item.label}</p>

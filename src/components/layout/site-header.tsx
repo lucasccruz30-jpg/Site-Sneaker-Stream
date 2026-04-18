@@ -14,7 +14,7 @@ export async function SiteHeader() {
   const settings = await getSiteSettings();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-black/8 bg-[rgba(250,247,243,0.86)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-brand-black/10 bg-[rgba(248,244,239,0.94)] backdrop-blur-md">
       <div className="border-b border-brand-black/8 bg-[#171717] text-brand-off-white">
         <Container className="flex min-h-11 flex-wrap items-center justify-between gap-3 py-2 text-[0.68rem] font-medium uppercase tracking-[0.22em]">
           <div className="flex items-center gap-4">
@@ -52,7 +52,7 @@ export async function SiteHeader() {
               <Input
                 name="search"
                 placeholder="Buscar sneakers, marcas e colorways"
-                className="store-input h-11 rounded-lg pl-11"
+                className="store-input h-11 pl-11"
               />
             </form>
           </div>
@@ -81,7 +81,7 @@ export async function SiteHeader() {
             <Input
               name="search"
               placeholder="Buscar sneakers, marcas e drops"
-              className="store-input h-11 rounded-lg pl-11"
+              className="store-input h-11 pl-11"
             />
           </form>
           <div className="grid grid-cols-2 gap-3 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-brand-warm-gray">

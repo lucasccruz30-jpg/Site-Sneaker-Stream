@@ -18,7 +18,7 @@ export function BrandMark({
     <Link href={href} className="group inline-flex items-center gap-3">
       <div
         className={cn(
-          "relative overflow-hidden rounded-xl border bg-white shadow-[0_12px_28px_rgba(19,19,19,0.08)] transition group-hover:border-brand-wine/20",
+          "relative overflow-hidden rounded-[0.35rem] border bg-white shadow-[0_10px_22px_rgba(19,19,19,0.06)] transition group-hover:border-brand-wine/20",
           inverse ? "border-white/12" : "border-brand-black/10",
           compact ? "size-10" : "size-14",
         )}

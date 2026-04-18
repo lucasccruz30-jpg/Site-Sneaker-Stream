@@ -37,10 +37,10 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
             <div className="flex flex-col justify-between gap-8 p-8 sm:p-10 xl:p-14">
               <div className="space-y-6">
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="inline-flex w-fit rounded-md border border-white/10 bg-white/8 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand-light-gray">
+                  <span className="inline-flex w-fit rounded-[0.22rem] border border-white/10 bg-white/8 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand-light-gray">
                     {banner.eyebrow ?? "Sneaker Stream"}
                   </span>
-                  <span className="inline-flex rounded-md border border-white/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand-light-gray">
+                  <span className="inline-flex rounded-[0.22rem] border border-white/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand-light-gray">
                     {settings.pixDiscountPercentage}% OFF no PIX
                   </span>
                 </div>
@@ -56,7 +56,7 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <Button asChild size="lg" className="h-12 rounded-lg bg-brand-wine px-7 text-white hover:bg-brand-wine/90">
+                  <Button asChild size="lg" className="h-12 rounded-[0.3rem] bg-brand-wine px-7 text-white hover:bg-brand-wine/90">
                     <Link href={banner.ctaHref ?? "/shop"} className="inline-flex items-center gap-2">
                       {banner.ctaLabel ?? "Explorar catalogo"}
                       <ArrowRight className="size-4" />
@@ -66,7 +66,7 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
                     asChild
                     size="lg"
                     variant="outline"
-                    className="h-12 rounded-lg border-white/12 bg-white/6 px-7 text-white hover:bg-white/10"
+                    className="h-12 rounded-[0.3rem] border-white/12 bg-white/6 px-7 text-white hover:bg-white/10"
                   >
                     <Link href="/autenticidade">Ver garantia</Link>
                   </Button>
@@ -78,8 +78,8 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
                   const Icon = item.icon;
 
                   return (
-                    <div key={item.title} className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-                      <div className="inline-flex size-10 items-center justify-center rounded-lg bg-white/[0.06] text-white">
+                    <div key={item.title} className="rounded-[0.35rem] border border-white/10 bg-white/[0.04] p-4">
+                      <div className="inline-flex size-10 items-center justify-center rounded-[0.25rem] bg-white/[0.06] text-white">
                         <Icon className="size-4" />
                       </div>
                       <p className="mt-4 text-sm font-medium text-white">{item.title}</p>
@@ -101,7 +101,7 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
               />
               <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-brand-wine/20" />
 
-              <div className="absolute left-6 top-6 rounded-xl border border-white/12 bg-black/28 px-4 py-3 backdrop-blur">
+              <div className="absolute left-6 top-6 rounded-[0.35rem] border border-white/12 bg-black/32 px-4 py-3">
                 <p className="text-[0.68rem] uppercase tracking-[0.24em] text-brand-light-gray">Selecao da semana</p>
                 <p className="mt-2 text-sm font-medium text-white">Foto grande, leitura limpa e foco total no produto.</p>
               </div>
@@ -125,7 +125,7 @@ function HeroBanner({ banner, settings }: { banner: BannerData; settings: SiteSe
             <Link
               key={item.href}
               href={item.href}
-              className="store-panel group flex items-center justify-between gap-4 px-5 py-4 transition hover:-translate-y-0.5"
+              className="store-panel group flex items-center justify-between gap-4 px-5 py-4 transition hover:border-brand-black/16"
             >
               <div>
                 <p className="text-sm font-medium text-brand-black">{item.label}</p>
@@ -160,7 +160,7 @@ function FeaturedShowcase({
             title="Uma vitrine mais objetiva, com produto no centro da decisao"
             description="Menos blocos institucionais e mais foco no que realmente faz a home vender: imagem forte, produto desejado e caminhos de compra claros."
           />
-          <Button asChild variant="outline" className="w-fit rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white">
+          <Button asChild variant="outline" className="w-fit rounded-[0.3rem] border-brand-black/10 bg-white/80 text-brand-black hover:bg-white">
             <Link href="/shop">Ver shop</Link>
           </Button>
         </div>
@@ -205,13 +205,13 @@ function FeaturedShowcase({
                   </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <Button asChild className="h-11 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+                    <Button asChild className="h-11 rounded-[0.3rem] bg-brand-black text-white hover:bg-brand-charcoal">
                       <Link href={`/shop/${featuredProduct.slug}`}>Ver produto</Link>
                     </Button>
                     <Button
                       asChild
                       variant="outline"
-                      className="h-11 rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
+                      className="h-11 rounded-[0.3rem] border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
                     >
                       <Link href="/drops">Ver drops</Link>
                     </Button>
@@ -283,7 +283,7 @@ export function ShowcaseSection({
       <Container className="space-y-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow={eyebrow} title={title} description={description} />
-          <Button asChild variant="outline" className="w-fit rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white">
+          <Button asChild variant="outline" className="w-fit rounded-[0.3rem] border-brand-black/10 bg-white/80 text-brand-black hover:bg-white">
             <Link href={href}>Explorar vitrine</Link>
           </Button>
         </div>
@@ -303,7 +303,7 @@ function TrustBand({ settings }: { settings: SiteSettingsData }) {
       <Container>
         <div className="store-panel-dark grid gap-8 overflow-hidden px-8 py-10 lg:grid-cols-[1fr_1.05fr] lg:px-12">
           <div className="space-y-5">
-            <span className="inline-flex w-fit rounded-md border border-white/10 bg-white/8 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-light-gray">
+            <span className="inline-flex w-fit rounded-[0.22rem] border border-white/10 bg-white/8 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-light-gray">
               Confianca de compra
             </span>
             <h2 className="max-w-2xl font-heading text-4xl leading-[0.92] text-white sm:text-5xl">
@@ -312,14 +312,14 @@ function TrustBand({ settings }: { settings: SiteSettingsData }) {
             <p className="max-w-xl text-sm leading-8 text-brand-light-gray sm:text-base">
               {settings.authenticityMessage} {freeShippingThreshold ? `Frete gratis acima de ${freeShippingThreshold}.` : ""}
             </p>
-            <Button asChild size="lg" className="h-12 rounded-lg bg-white px-7 text-brand-black hover:bg-brand-off-white">
+            <Button asChild size="lg" className="h-12 rounded-[0.3rem] bg-white px-7 text-brand-black hover:bg-brand-off-white">
               <Link href="/autenticidade">Entender nossa garantia</Link>
             </Button>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             {trustPillars.map((pillar) => (
-              <div key={pillar.title} className="rounded-2xl border border-white/10 bg-white/[0.05] p-5">
+              <div key={pillar.title} className="rounded-[0.35rem] border border-white/10 bg-white/[0.05] p-5">
                 <p className="text-lg font-semibold text-white">{pillar.title}</p>
                 <p className="mt-3 text-sm leading-7 text-brand-light-gray">{pillar.description}</p>
               </div>

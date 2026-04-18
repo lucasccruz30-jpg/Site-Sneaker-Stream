@@ -24,8 +24,8 @@ export async function SiteFooter() {
             const Icon = item.icon;
 
             return (
-              <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                <div className="inline-flex size-11 items-center justify-center rounded-lg bg-white/[0.08] text-brand-off-white">
+              <div key={item.title} className="rounded-[0.4rem] border border-white/10 bg-white/[0.04] p-5">
+                <div className="inline-flex size-11 items-center justify-center rounded-[0.3rem] bg-white/[0.08] text-brand-off-white">
                   <Icon className="size-4" />
                 </div>
                 <p className="mt-4 text-sm font-medium text-brand-off-white">{item.title}</p>
@@ -53,7 +53,7 @@ export async function SiteFooter() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex size-11 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-brand-off-white transition hover:border-brand-light-gray/40 hover:bg-white/[0.1]"
+                    className="inline-flex size-11 items-center justify-center rounded-[0.3rem] border border-white/10 bg-white/[0.05] text-brand-off-white transition hover:border-brand-light-gray/40 hover:bg-white/[0.1]"
                   >
                     <Icon className="size-4" />
                   </Link>

@@ -19,7 +19,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
   ].filter(Boolean);
 
   return (
-    <article className="store-panel group relative overflow-hidden transition duration-500 hover:-translate-y-1">
+    <article className="store-panel group relative overflow-hidden transition duration-300 hover:border-brand-black/16">
       <div className="absolute right-4 top-4 z-10">
         <WishlistButton product={product} />
       </div>
@@ -38,19 +38,19 @@ export function ProductCard({ product }: { product: ProductCardData }) {
             {badges.map((badge) => (
               <Badge
                 key={badge}
-                className="rounded-md border border-white/60 bg-white/88 px-3 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-brand-black shadow-none"
+                className="rounded-[0.22rem] border border-white/60 bg-white/92 px-3 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-brand-black shadow-none"
               >
                 {badge}
               </Badge>
             ))}
             {discountPercentage > 0 ? (
-              <Badge className="rounded-md border-none bg-brand-wine px-3 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-white">
+              <Badge className="rounded-[0.22rem] border-none bg-brand-wine px-3 py-1 text-[0.65rem] uppercase tracking-[0.16em] text-white">
                 -{discountPercentage}%
               </Badge>
             ) : null}
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-white/60 bg-white/82 px-3 py-2 backdrop-blur">
+          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-[0.35rem] border border-white/60 bg-white/88 px-3 py-2">
             <span className="text-[0.68rem] uppercase tracking-[0.18em] text-brand-warm-gray">{product.brand}</span>
             <span className="text-[0.68rem] uppercase tracking-[0.18em] text-brand-charcoal">{stockStatus.label}</span>
           </div>
@@ -94,7 +94,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
         </div>
 
         <div className="grid gap-2 sm:grid-cols-[1fr_auto]">
-          <Button asChild className="h-11 rounded-lg bg-brand-black text-white hover:bg-brand-charcoal">
+          <Button asChild className="h-11 rounded-[0.3rem] bg-brand-black text-white hover:bg-brand-charcoal">
             <Link href={`/shop/${product.slug}`} className="inline-flex items-center justify-center gap-2">
               Ver produto
               <ArrowRight className="size-4" />
@@ -103,7 +103,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
           <Button
             asChild
             variant="outline"
-            className="h-11 rounded-lg border-brand-black/10 bg-white/80 px-4 text-brand-black hover:bg-white"
+            className="h-11 rounded-[0.3rem] border-brand-black/10 bg-white/80 px-4 text-brand-black hover:bg-white"
           >
             <Link href={`/shop/${product.slug}`}>Ver numeracao</Link>
           </Button>

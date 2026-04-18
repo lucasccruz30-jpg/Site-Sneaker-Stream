@@ -89,7 +89,7 @@ export function ProductDetail({
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="space-y-4">
           <div className="store-panel overflow-hidden p-3">
-            <div className="relative aspect-square overflow-hidden rounded-xl bg-[#ece6e1]">
+            <div className="relative aspect-square overflow-hidden rounded-[0.35rem] bg-[#ece6e1]">
               <Image
                 src={selectedImage}
                 alt={product.name}
@@ -97,7 +97,7 @@ export function ProductDetail({
                 className="object-cover transition duration-500 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute left-4 top-4 rounded-md border border-white/70 bg-white/88 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
+              <div className="absolute left-4 top-4 rounded-[0.22rem] border border-white/70 bg-white/92 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
                 Visual premium
               </div>
             </div>
@@ -109,7 +109,7 @@ export function ProductDetail({
                 key={image.id}
                 type="button"
                 onClick={() => setSelectedImage(image.url)}
-                className={`relative aspect-square overflow-hidden rounded-lg border ${
+                className={`relative aspect-square overflow-hidden rounded-[0.3rem] border ${
                   selectedImage === image.url ? "border-brand-wine" : "border-brand-black/10"
                 } bg-white`}
               >
@@ -156,21 +156,21 @@ export function ProductDetail({
           <div className="store-panel space-y-7 p-7 sm:p-8">
             <div className="flex flex-wrap items-center gap-2">
               {product.isExclusive ? (
-                <span className="rounded-md bg-brand-wine px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white">
+                <span className="rounded-[0.22rem] bg-brand-wine px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white">
                   Exclusivo
                 </span>
               ) : null}
               {product.isNewRelease ? (
-                <span className="rounded-md border border-brand-black/10 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
+                <span className="rounded-[0.22rem] border border-brand-black/10 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
                   Lancamento
                 </span>
               ) : null}
               {discountPercentage > 0 ? (
-                <span className="rounded-md border border-brand-black/10 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
+                <span className="rounded-[0.22rem] border border-brand-black/10 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
                   {discountPercentage}% off
                 </span>
               ) : null}
-              <span className="rounded-md border border-brand-black/10 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
+              <span className="rounded-[0.22rem] border border-brand-black/10 bg-white px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-black">
                 {stockStatus.label}
               </span>
             </div>
@@ -192,7 +192,7 @@ export function ProductDetail({
               <span>{product.totalStock} unidades no estoque total</span>
             </div>
 
-            <div className="rounded-2xl border border-brand-black/8 bg-[#f8f4ef] p-5">
+            <div className="rounded-[0.4rem] border border-brand-black/10 bg-[#f8f4ef] p-5">
               <div className="flex flex-wrap items-end gap-3">
                 <span className="text-4xl font-semibold text-brand-black">{formatCurrency(currentPrice)}</span>
                 {product.salePriceInCents ? (
@@ -219,7 +219,7 @@ export function ProductDetail({
                     type="button"
                     disabled={sizeVariant.stock <= 0}
                     onClick={() => setSelectedVariantId(sizeVariant.id)}
-                    className={`rounded-xl border px-3 py-3 text-sm font-medium transition ${
+                    className={`rounded-[0.3rem] border px-3 py-3 text-sm font-medium transition ${
                       selectedVariantId === sizeVariant.id
                         ? "border-brand-wine bg-brand-wine/10 text-brand-black"
                         : "border-brand-black/10 bg-white text-brand-charcoal"
@@ -240,7 +240,7 @@ export function ProductDetail({
             <div className="grid gap-3 md:grid-cols-[1fr_1fr_auto]">
               <Button
                 size="lg"
-                className="h-12 rounded-lg bg-brand-wine text-white hover:bg-brand-wine/90"
+                className="h-12 rounded-[0.3rem] bg-brand-wine text-white hover:bg-brand-wine/90"
                 disabled={!variant || variant.stock <= 0}
                 onClick={handleBuyNow}
               >
@@ -249,13 +249,13 @@ export function ProductDetail({
               <Button
                 size="lg"
                 variant="outline"
-                className="h-12 rounded-lg border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
+                className="h-12 rounded-[0.3rem] border-brand-black/10 bg-white/80 text-brand-black hover:bg-white"
                 disabled={!variant || variant.stock <= 0}
                 onClick={handleAddToCart}
               >
                 Adicionar ao carrinho
               </Button>
-              <WishlistButton product={product} className="size-12 rounded-lg" />
+              <WishlistButton product={product} className="size-12 rounded-[0.3rem]" />
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3">
@@ -299,7 +299,7 @@ export function ProductDetail({
             <Button
               asChild
               variant="outline"
-              className="h-11 rounded-lg border-white/12 bg-white/6 text-white hover:bg-white/10"
+              className="h-11 rounded-[0.3rem] border-white/12 bg-white/6 text-white hover:bg-white/10"
             >
               <Link href="/politica-de-troca-e-devolucao">Ver politica de troca e devolucao</Link>
             </Button>
@@ -316,7 +316,7 @@ export function ProductDetail({
             </p>
           </div>
           <Button
-            className="h-12 rounded-lg bg-brand-wine px-5 text-white hover:bg-brand-wine/90"
+            className="h-12 rounded-[0.3rem] bg-brand-wine px-5 text-white hover:bg-brand-wine/90"
             disabled={!variant || variant.stock <= 0}
             onClick={handleBuyNow}
           >
